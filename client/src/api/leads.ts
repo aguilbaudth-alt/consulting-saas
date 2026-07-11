@@ -7,18 +7,12 @@ interface LeadPayload {
   source: "audit-guide" | "contact";
 }
 
-interface LeadResponse {
-  ok: boolean;
-  emailSent?: boolean;
-  error?: string;
-}
-
 /**
- * Posts to the Google Apps Script Web App (see /google-apps-script/Code.gs).
- * Uses text/plain to avoid a CORS preflight request, which Apps Script Web Apps
- * don't handle reliably — the script still parses the body as JSON on its end.
+ * Posts to the Google Apps Script Web App backing the Sheet. The exact response
+ * shape depends on whatever script is deployed there, so we only rely on the
+ * HTTP status — not a specific JSON contract — to decide success/failure.
  */
-export const submitLead = async (payload: LeadPayload): Promise<LeadResponse> => {
+export const submitLead = async (payload: LeadPayload): Promise<void> => {
   const url = import.meta.env.VITE_GOOGLE_SCRIPT_URL;
   const res = await fetch(url, {
     method: "POST",
@@ -26,9 +20,7 @@ export const submitLead = async (payload: LeadPayload): Promise<LeadResponse> =>
     body: JSON.stringify(payload),
   });
 
-  const data: LeadResponse = await res.json();
-  if (!res.ok || !data.ok) {
-    throw new Error(data.error ?? "Failed to submit");
+  if (!res.ok) {
+    throw new Error("Failed to submit");
   }
-  return data;
 };
