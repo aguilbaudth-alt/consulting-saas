@@ -12,7 +12,9 @@ export interface AccessTokenPayload {
 const hashToken = (token: string) => crypto.createHash("sha256").update(token).digest("hex");
 
 export const signAccessToken = (payload: AccessTokenPayload) =>
-  jwt.sign(payload, env.JWT_ACCESS_SECRET, { expiresIn: env.JWT_ACCESS_EXPIRES_IN });
+  jwt.sign(payload, env.JWT_ACCESS_SECRET, {
+    expiresIn: env.JWT_ACCESS_EXPIRES_IN as jwt.SignOptions["expiresIn"],
+  });
 
 export const verifyAccessToken = (token: string) =>
   jwt.verify(token, env.JWT_ACCESS_SECRET) as AccessTokenPayload & jwt.JwtPayload;
@@ -21,8 +23,8 @@ const parseExpiryToDate = (expiresIn: string): Date => {
   const match = /^(\d+)([smhd])$/.exec(expiresIn);
   if (!match) throw new Error(`Invalid expiry format: ${expiresIn}`);
   const [, amount, unit] = match;
-  const multipliers: Record<string, number> = { s: 1000, m: 60_000, h: 3_600_000, d: 86_400_000 };
-  return new Date(Date.now() + Number(amount) * multipliers[unit]);
+  const multipliers = { s: 1000, m: 60_000, h: 3_600_000, d: 86_400_000 } as const;
+  return new Date(Date.now() + Number(amount) * multipliers[unit as keyof typeof multipliers]);
 };
 
 export const issueRefreshToken = async (userId: string) => {

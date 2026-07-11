@@ -11,3 +11,6 @@ coverage/
 client/dist/
 server/dist/
 server/prisma/dev.db
+*.tsbuildinfo
+client/vite.config.js
+client/vite.config.d.ts
