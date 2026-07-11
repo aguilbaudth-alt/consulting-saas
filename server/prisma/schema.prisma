@@ -39,3 +39,17 @@ model RefreshToken {
   @@index([userId])
   @@map("refresh_tokens")
 }
+
+model Lead {
+  id        String   @id @default(uuid())
+  name      String
+  email     String
+  company   String
+  phone     String?
+  message   String?
+  source    String   @default("audit-guide")
+  createdAt DateTime @default(now())
+
+  @@index([email])
+  @@map("leads")
+}

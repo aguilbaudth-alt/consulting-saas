@@ -1,20 +1,26 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { Layout } from "./components/Layout";
-import { ProtectedRoute } from "./components/ProtectedRoute";
-import { Dashboard } from "./pages/Dashboard";
+import { MarketingLayout } from "./components/MarketingLayout";
+import { AuditGuide } from "./pages/AuditGuide";
+import { Contact } from "./pages/Contact";
+import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
+import { PortfolioProject } from "./pages/PortfolioProject";
 import { Register } from "./pages/Register";
 
 const App = () => (
   <Routes>
+    <Route element={<MarketingLayout />}>
+      <Route path="/" element={<Home />} />
+      <Route path="/audit-guide" element={<AuditGuide />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/portfolio/:slug" element={<PortfolioProject />} />
+    </Route>
     <Route element={<Layout />}>
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      <Route element={<ProtectedRoute />}>
-        <Route path="/dashboard" element={<Dashboard />} />
-      </Route>
-      <Route path="/" element={<Navigate to="/dashboard" replace />} />
     </Route>
+    <Route path="/dashboard" element={<Navigate to="/" replace />} />
   </Routes>
 );
 

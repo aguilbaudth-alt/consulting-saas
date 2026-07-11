@@ -10,6 +10,10 @@ const envSchema = z.object({
   JWT_ACCESS_EXPIRES_IN: z.string().default("15m"),
   JWT_REFRESH_EXPIRES_IN: z.string().default("7d"),
   CLIENT_ORIGIN: z.string().default("http://localhost:5173"),
+  GMAIL_USER: z.string().email(),
+  GMAIL_PASSWORD: z.string().min(1),
+  SMTP_FROM: z.string().optional(),
+  NOTIFICATION_EMAIL: z.string().optional(),
 });
 
 const parsed = envSchema.safeParse(process.env);

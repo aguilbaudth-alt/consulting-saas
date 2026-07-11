@@ -6,6 +6,7 @@ import morgan from "morgan";
 import { env } from "./config/env";
 import { errorHandler, notFoundHandler } from "./middleware/errorHandler";
 import authRoutes from "./routes/auth.routes";
+import leadRoutes from "./routes/lead.routes";
 import userRoutes from "./routes/user.routes";
 
 export const createApp = () => {
@@ -21,6 +22,7 @@ export const createApp = () => {
 
   app.use("/api/auth", authRoutes);
   app.use("/api/users", userRoutes);
+  app.use("/api/leads", leadRoutes);
 
   app.use(notFoundHandler);
   app.use(errorHandler);
