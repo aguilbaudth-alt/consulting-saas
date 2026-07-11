@@ -33,7 +33,8 @@ export const Contact = () => {
     try {
       await submitLead({ ...form, source: "contact" });
       setSubmitted(true);
-    } catch {
+    } catch (err) {
+      console.error("[Contact] Failed to submit consultation request:", err);
       setError("Something went wrong. Please try again in a moment.");
     } finally {
       setIsSubmitting(false);

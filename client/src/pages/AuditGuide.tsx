@@ -51,7 +51,8 @@ export const AuditGuide = () => {
         source: "audit-guide",
       });
       setSubmitted(true);
-    } catch {
+    } catch (err) {
+      console.error("[AuditGuide] Failed to submit guide request:", err);
       setError("Something went wrong. Please try again in a moment.");
     } finally {
       setIsSubmitting(false);
