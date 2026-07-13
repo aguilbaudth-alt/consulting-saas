@@ -36,10 +36,12 @@ const Avatar = ({ name, photo }: { name: string; photo: string }) => {
 
 export const TestimonialsSection = () => {
   const { t, language } = useLanguage();
+  const wrapperRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const offsetRef = useRef(0);
   const pausedRef = useRef(false);
   const dragRef = useRef<{ pointerId: number; startX: number; startOffset: number } | null>(null);
+  const wheelResumeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [dragging, setDragging] = useState(false);
 
   const track = [...TESTIMONIALS, ...TESTIMONIALS];
@@ -71,13 +73,27 @@ export const TestimonialsSection = () => {
     return () => cancelAnimationFrame(frame);
   }, []);
 
-  const step = (direction: 1 | -1) => {
-    const el = trackRef.current;
+  useEffect(() => {
+    const el = wrapperRef.current;
     if (!el) return;
-    const firstCard = el.firstElementChild as HTMLElement | null;
-    const cardWidth = firstCard ? firstCard.getBoundingClientRect().width + 24 : 344;
-    offsetRef.current += direction * cardWidth;
-  };
+
+    const handleWheel = (e: WheelEvent) => {
+      if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+      e.preventDefault();
+      offsetRef.current += e.deltaX;
+      pausedRef.current = true;
+      if (wheelResumeTimer.current) clearTimeout(wheelResumeTimer.current);
+      wheelResumeTimer.current = setTimeout(() => {
+        pausedRef.current = false;
+      }, 1000);
+    };
+
+    el.addEventListener("wheel", handleWheel, { passive: false });
+    return () => {
+      el.removeEventListener("wheel", handleWheel);
+      if (wheelResumeTimer.current) clearTimeout(wheelResumeTimer.current);
+    };
+  }, []);
 
   const handlePointerDown = (e: React.PointerEvent) => {
     dragRef.current = { pointerId: e.pointerId, startX: e.clientX, startOffset: offsetRef.current };
@@ -110,65 +126,46 @@ export const TestimonialsSection = () => {
         </p>
       </div>
 
-      <div className="mt-10 flex items-center gap-3 px-6 sm:gap-6">
-        <button
-          type="button"
-          onClick={() => step(-1)}
-          aria-label="Show previous testimonial"
-          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white text-blue-800 shadow-sm transition hover:border-blue-300"
-        >
-          ←
-        </button>
-
-        <div
-          className={`min-w-0 flex-1 overflow-hidden ${dragging ? "cursor-grabbing" : "cursor-grab"}`}
-          style={{ touchAction: "pan-y" }}
-          onMouseEnter={() => {
-            pausedRef.current = true;
-          }}
-          onMouseLeave={() => {
-            if (!dragRef.current) pausedRef.current = false;
-          }}
-          onPointerDown={handlePointerDown}
-          onPointerMove={handlePointerMove}
-          onPointerUp={endDrag}
-          onPointerCancel={endDrag}
-        >
-          <div ref={trackRef} className="flex w-max gap-6">
-            {track.map((testimonial, i) => {
-              const name = resolveName(testimonial.name, language);
-              return (
-                <div
-                  key={i}
-                  className="flex w-80 shrink-0 flex-col justify-between rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:w-96 sm:p-8"
-                >
-                  <p className="text-sm leading-relaxed text-slate-600">
-                    &ldquo;{testimonial.quote[language]}&rdquo;
-                  </p>
-                  <div className="mt-6 flex items-center gap-3">
-                    <Avatar name={name} photo={testimonial.photo} />
-                    <div>
-                      <p className="font-semibold text-blue-900">{name}</p>
-                      <p className="text-xs text-slate-500">
-                        {testimonial.title ? `${testimonial.title}, ` : ""}
-                        {testimonial.company}
-                      </p>
-                    </div>
+      <div
+        ref={wrapperRef}
+        className={`mt-10 overflow-hidden px-6 ${dragging ? "cursor-grabbing" : "cursor-grab"}`}
+        style={{ touchAction: "pan-y" }}
+        onMouseEnter={() => {
+          pausedRef.current = true;
+        }}
+        onMouseLeave={() => {
+          if (!dragRef.current) pausedRef.current = false;
+        }}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={endDrag}
+        onPointerCancel={endDrag}
+      >
+        <div ref={trackRef} className="flex w-max gap-6">
+          {track.map((testimonial, i) => {
+            const name = resolveName(testimonial.name, language);
+            return (
+              <div
+                key={i}
+                className="flex w-80 shrink-0 flex-col justify-between rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:w-96 sm:p-8"
+              >
+                <p className="text-sm leading-relaxed text-slate-600">
+                  &ldquo;{testimonial.quote[language]}&rdquo;
+                </p>
+                <div className="mt-6 flex items-center gap-3">
+                  <Avatar name={name} photo={testimonial.photo} />
+                  <div>
+                    <p className="font-semibold text-blue-900">{name}</p>
+                    <p className="text-xs text-slate-500">
+                      {testimonial.title ? `${testimonial.title}, ` : ""}
+                      {testimonial.company}
+                    </p>
                   </div>
                 </div>
-              );
-            })}
-          </div>
+              </div>
+            );
+          })}
         </div>
-
-        <button
-          type="button"
-          onClick={() => step(1)}
-          aria-label="Show next testimonial"
-          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white text-blue-800 shadow-sm transition hover:border-blue-300"
-        >
-          →
-        </button>
       </div>
     </section>
   );
