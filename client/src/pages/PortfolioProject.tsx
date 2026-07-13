@@ -30,12 +30,12 @@ export const PortfolioProject = () => {
       <div className="mx-auto max-w-3xl px-6">
         <Link
           to={`/${language}#portfolio`}
-          className="text-sm font-medium text-slate-500 hover:text-blue-800"
+          className="text-sm font-medium text-slate-500 hover:text-blue-900"
         >
           ← {t.portfolio.back}
         </Link>
 
-        <h1 className="mt-6 text-3xl font-bold text-blue-900">{project.name}</h1>
+        <h1 className="mt-6 text-3xl font-bold text-blue-950">{project.name}</h1>
         {sector && <p className="mt-1 text-sm text-slate-500">{sector}</p>}
 
         {summary && <p className="mt-6 text-lg text-slate-700">{summary}</p>}
@@ -53,7 +53,7 @@ export const PortfolioProject = () => {
             {supplierCategories.map((category) => (
               <span
                 key={category}
-                className="rounded-full bg-blue-50 px-3 py-1 text-sm font-medium text-blue-800"
+                className="rounded-full bg-blue-50 px-3 py-1 text-sm font-medium text-blue-900"
               >
                 {category}
               </span>
@@ -69,21 +69,21 @@ export const PortfolioProject = () => {
 
         {challenge && (
           <div className="mt-10">
-            <h2 className="text-xl font-semibold text-blue-900">{t.portfolio.challenge}</h2>
+            <h2 className="text-xl font-semibold text-blue-950">{t.portfolio.challenge}</h2>
             <p className="mt-3 text-slate-600">{challenge}</p>
           </div>
         )}
 
         {approach && (
           <div className="mt-10">
-            <h2 className="text-xl font-semibold text-blue-900">{t.portfolio.approach}</h2>
+            <h2 className="text-xl font-semibold text-blue-950">{t.portfolio.approach}</h2>
             <p className="mt-3 text-slate-600">{approach}</p>
           </div>
         )}
 
         {results && results.length > 0 && (
           <div className="mt-10">
-            <h2 className="text-xl font-semibold text-blue-900">{t.portfolio.results}</h2>
+            <h2 className="text-xl font-semibold text-blue-950">{t.portfolio.results}</h2>
             <ul className="mt-3 space-y-2">
               {results.map((result) => (
                 <li key={result} className="flex gap-2 text-slate-600">
@@ -95,11 +95,11 @@ export const PortfolioProject = () => {
           </div>
         )}
 
-        <div className="mt-12 rounded-2xl bg-blue-900 px-8 py-8 text-center text-white">
+        <div className="mt-12 rounded-2xl bg-blue-950 px-8 py-8 text-center text-white">
           <p className="text-lg font-semibold">{t.portfolio.ctaTitle}</p>
           <Link
             to={`/${language}/contact`}
-            className="mt-4 inline-block rounded-md bg-sky-500 px-6 py-2.5 font-semibold text-white shadow-lg shadow-sky-900/30 transition hover:bg-sky-400"
+            className="mt-4 inline-block rounded-md bg-blue-600 px-6 py-2.5 font-semibold text-white shadow-lg shadow-blue-950/30 transition hover:bg-blue-500"
           >
             {t.portfolio.ctaButton}
           </Link>

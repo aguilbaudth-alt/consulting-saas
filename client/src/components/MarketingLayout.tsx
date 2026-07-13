@@ -22,7 +22,7 @@ export const MarketingLayout = () => {
       </button>
     </div>
   ) : (
-    <Link to="/login" className="text-sm font-medium text-slate-500 hover:text-blue-800">
+    <Link to="/login" className="text-sm font-medium text-slate-500 hover:text-blue-900">
       {t.nav.signIn}
     </Link>
   );
@@ -31,14 +31,14 @@ export const MarketingLayout = () => {
     <div className="min-h-screen bg-white text-slate-900">
       <header className="border-b border-slate-100">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
-          <Link to={`/${language}`} className="text-lg font-semibold text-blue-900">
+          <Link to={`/${language}`} className="text-lg font-semibold text-blue-950">
             LEANOVEX Consulting
           </Link>
 
           <div className="hidden items-center gap-6 sm:flex">
             <Link
               to={`/${language}/about`}
-              className="text-sm font-medium text-slate-600 hover:text-blue-800"
+              className="text-sm font-medium text-slate-600 hover:text-blue-900"
             >
               {t.nav.about}
             </Link>
@@ -66,7 +66,7 @@ export const MarketingLayout = () => {
               <Link
                 to={`/${language}/about`}
                 onClick={() => setMenuOpen(false)}
-                className="text-sm font-medium text-slate-600 hover:text-blue-800"
+                className="text-sm font-medium text-slate-600 hover:text-blue-900"
               >
                 {t.nav.about}
               </Link>

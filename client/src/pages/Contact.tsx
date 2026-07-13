@@ -50,7 +50,7 @@ export const Contact = () => {
     <section className="bg-slate-50 py-16">
       <div className="mx-auto max-w-2xl px-6">
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-blue-900">{t.contact.title}</h1>
+          <h1 className="text-3xl font-bold text-blue-950">{t.contact.title}</h1>
           <p className="mt-3 text-slate-600">{t.contact.subtitle}</p>
         </div>
 
@@ -60,7 +60,7 @@ export const Contact = () => {
               <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
                 ✓
               </div>
-              <h2 className="text-xl font-semibold text-blue-900">{t.contact.successTitle}</h2>
+              <h2 className="text-xl font-semibold text-blue-950">{t.contact.successTitle}</h2>
               <p className="mt-2 text-slate-600">
                 {t.contact.successBody} {form.name.split(" ")[0]}. {t.contact.successBodyMid}{" "}
                 {form.email} {t.contact.successBodyEnd}
@@ -121,7 +121,7 @@ export const Contact = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full rounded-md bg-blue-900 px-3 py-2.5 font-semibold text-white transition hover:bg-blue-800 disabled:opacity-50"
+                className="w-full rounded-md bg-blue-950 px-3 py-2.5 font-semibold text-white transition hover:bg-blue-900 disabled:opacity-50"
               >
                 {isSubmitting ? t.contact.submitting : t.contact.submit}
               </button>

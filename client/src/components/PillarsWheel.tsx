@@ -65,7 +65,7 @@ export const PillarsWheel = ({ pillars }: PillarsWheelProps) => {
                 key={angle}
                 points="-3,-3 3,-3 0,4"
                 transform={`translate(${x} ${y}) rotate(${angle})`}
-                className="fill-sky-500"
+                className="fill-blue-600"
               />
             );
           })}
@@ -75,10 +75,10 @@ export const PillarsWheel = ({ pillars }: PillarsWheelProps) => {
           key={activePillar.id}
           className="absolute left-1/2 top-1/2 flex h-64 w-64 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full bg-blue-50 px-8 text-center sm:h-96 sm:w-96 sm:px-14"
         >
-          <span className="flex h-7 w-7 items-center justify-center text-blue-800 sm:h-9 sm:w-9">
+          <span className="flex h-7 w-7 items-center justify-center text-blue-900 sm:h-9 sm:w-9">
             {activePillar.icon}
           </span>
-          <h3 className="mt-1.5 text-base font-bold leading-tight text-blue-900 sm:mt-2 sm:text-lg">
+          <h3 className="mt-1.5 text-base font-bold leading-tight text-blue-950 sm:mt-2 sm:text-lg">
             {activeText.title}
           </h3>
           <p className="mt-1 text-xs italic leading-snug text-slate-500 sm:mt-1.5 sm:text-sm">
@@ -106,15 +106,15 @@ export const PillarsWheel = ({ pillars }: PillarsWheelProps) => {
               style={{ top: pos.top, left: pos.left }}
               className={`absolute flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 shadow-sm transition sm:h-20 sm:w-20 ${
                 isActive
-                  ? "border-blue-900 bg-blue-900 text-white"
-                  : "border-slate-200 bg-white text-blue-800 hover:border-blue-300"
+                  ? "border-blue-950 bg-blue-950 text-white"
+                  : "border-slate-200 bg-white text-blue-900 hover:border-blue-300"
               }`}
               aria-pressed={isActive}
             >
               <span className="h-4 w-4 sm:h-7 sm:w-7">{pillar.icon}</span>
               <span
                 className={`absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full text-[8px] font-bold shadow-sm sm:h-6 sm:w-6 sm:text-xs ${
-                  isActive ? "bg-white text-blue-900" : "bg-blue-900 text-white"
+                  isActive ? "bg-white text-blue-950" : "bg-blue-950 text-white"
                 }`}
               >
                 {index + 1}
@@ -132,7 +132,7 @@ export const PillarsWheel = ({ pillars }: PillarsWheelProps) => {
             onClick={() => setActive(index)}
             aria-label={`Show ${t.pillars[pillar.id].title}`}
             className={`h-1.5 w-8 rounded-full transition ${
-              index === active ? "bg-blue-900" : "bg-slate-200 hover:bg-slate-300"
+              index === active ? "bg-blue-950" : "bg-slate-200 hover:bg-slate-300"
             }`}
           />
         ))}

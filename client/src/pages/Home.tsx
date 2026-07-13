@@ -16,10 +16,10 @@ export const Home = () => {
 
   return (
     <>
-      <section className="bg-gradient-to-br from-blue-900 via-blue-800 to-sky-600 text-white">
+      <section className="bg-gradient-to-br from-blue-950 via-blue-900 to-blue-800 text-white">
         <div className="mx-auto max-w-4xl px-6 py-20 text-center">
           {user && (
-            <p className="mb-4 inline-block rounded-full bg-white/10 px-4 py-1 text-sm font-medium text-sky-100 backdrop-blur">
+            <p className="mb-4 inline-block rounded-full bg-white/10 px-4 py-1 text-sm font-medium text-blue-100 backdrop-blur">
               {t.nav.welcomeBack} {user.name}
             </p>
           )}
@@ -28,7 +28,7 @@ export const Home = () => {
           <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
             <Link
               to={`/${language}/contact`}
-              className="inline-block rounded-md bg-sky-500 px-8 py-3 text-base font-semibold text-white shadow-lg shadow-sky-900/30 transition hover:bg-sky-400"
+              className="inline-block rounded-md bg-blue-600 px-8 py-3 text-base font-semibold text-white shadow-lg shadow-blue-950/30 transition hover:bg-blue-500"
             >
               {t.home.scheduleConsultation}
             </Link>
@@ -43,7 +43,7 @@ export const Home = () => {
       </section>
 
       <section className="mx-auto max-w-6xl px-6 py-16">
-        <h2 className="text-center text-2xl font-bold text-blue-900 sm:text-3xl">
+        <h2 className="text-center text-2xl font-bold text-blue-950 sm:text-3xl">
           {t.home.pillarsTitle}
         </h2>
         <p className="mx-auto mt-3 max-w-2xl text-center text-slate-600">
@@ -57,11 +57,11 @@ export const Home = () => {
         <div className="mx-auto max-w-4xl px-6 text-center">
           <div className="flex flex-col items-center justify-center gap-6 sm:flex-row sm:gap-16">
             <div>
-              <p className="text-3xl font-bold text-blue-900">{t.home.years}</p>
+              <p className="text-3xl font-bold text-blue-950">{t.home.years}</p>
               <p className="mt-1 text-sm text-slate-600">{t.home.yearsSub}</p>
             </div>
             <div>
-              <p className="text-3xl font-bold text-blue-900">{t.home.factories}</p>
+              <p className="text-3xl font-bold text-blue-950">{t.home.factories}</p>
               <p className="mt-1 text-sm text-slate-600">{t.home.factoriesSub}</p>
             </div>
           </div>
@@ -70,7 +70,7 @@ export const Home = () => {
       </section>
 
       <section id="portfolio" className="mx-auto max-w-6xl px-6 py-16">
-        <h2 className="text-center text-2xl font-bold text-blue-900 sm:text-3xl">
+        <h2 className="text-center text-2xl font-bold text-blue-950 sm:text-3xl">
           {t.home.portfolioTitle}
         </h2>
         <p className="mx-auto mt-3 max-w-2xl text-center text-slate-600">
@@ -91,13 +91,13 @@ export const Home = () => {
 
       <TestimonialsSection />
 
-      <section className="bg-blue-900 py-16 text-center text-white">
+      <section className="bg-blue-950 py-16 text-center text-white">
         <div className="mx-auto max-w-2xl px-6">
           <h2 className="text-2xl font-bold sm:text-3xl">{t.home.ctaTitle}</h2>
           <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
             <Link
               to={`/${language}/contact`}
-              className="inline-block rounded-md bg-sky-500 px-8 py-3 font-semibold text-white shadow-lg shadow-sky-900/30 transition hover:bg-sky-400"
+              className="inline-block rounded-md bg-blue-600 px-8 py-3 font-semibold text-white shadow-lg shadow-blue-950/30 transition hover:bg-blue-500"
             >
               {t.home.scheduleConsultation}
             </Link>

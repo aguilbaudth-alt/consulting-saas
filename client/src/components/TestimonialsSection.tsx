@@ -18,7 +18,7 @@ const Avatar = ({ name, photo }: { name: string; photo: string }) => {
 
   if (failed) {
     return (
-      <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-blue-100 text-base font-bold text-blue-800">
+      <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-blue-100 text-base font-bold text-blue-900">
         {initials}
       </div>
     );
@@ -118,7 +118,7 @@ export const TestimonialsSection = () => {
   return (
     <section className="bg-slate-50 py-16">
       <div className="mx-auto max-w-6xl px-6">
-        <h2 className="text-center text-2xl font-bold text-blue-900 sm:text-3xl">
+        <h2 className="text-center text-2xl font-bold text-blue-950 sm:text-3xl">
           {t.testimonials.title}
         </h2>
         <p className="mx-auto mt-3 max-w-2xl text-center text-slate-600">
@@ -155,7 +155,7 @@ export const TestimonialsSection = () => {
                 <div className="mt-6 flex items-center gap-3">
                   <Avatar name={name} photo={testimonial.photo} />
                   <div>
-                    <p className="font-semibold text-blue-900">{name}</p>
+                    <p className="font-semibold text-blue-950">{name}</p>
                     <p className="text-xs text-slate-500">
                       {testimonial.title ? `${testimonial.title}, ` : ""}
                       {testimonial.company}

@@ -18,7 +18,7 @@ export const About = () => {
               className="h-32 w-32 shrink-0 rounded-full object-cover"
             />
             <div>
-              <h1 className="text-2xl font-bold text-blue-900 sm:text-3xl">{t.about.name}</h1>
+              <h1 className="text-2xl font-bold text-blue-950 sm:text-3xl">{t.about.name}</h1>
               <p className="mt-1 text-slate-500">{t.about.role}</p>
             </div>
           </div>
@@ -31,12 +31,12 @@ export const About = () => {
         </div>
       </section>
 
-      <section className="bg-blue-900 py-16 text-center text-white">
+      <section className="bg-blue-950 py-16 text-center text-white">
         <div className="mx-auto max-w-2xl px-6">
           <h2 className="text-2xl font-bold sm:text-3xl">{t.about.ctaTitle}</h2>
           <Link
             to={`/${language}/contact`}
-            className="mt-8 inline-block rounded-md bg-sky-500 px-8 py-3 font-semibold text-white shadow-lg shadow-sky-900/30 transition hover:bg-sky-400"
+            className="mt-8 inline-block rounded-md bg-blue-600 px-8 py-3 font-semibold text-white shadow-lg shadow-blue-950/30 transition hover:bg-blue-500"
           >
             {t.about.ctaButton}
           </Link>

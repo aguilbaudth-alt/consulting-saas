@@ -54,7 +54,7 @@ export const AuditGuide = () => {
 
   return (
     <>
-      <section className="bg-gradient-to-br from-blue-900 via-blue-800 to-emerald-800 text-white">
+      <section className="bg-gradient-to-br from-blue-950 via-blue-900 to-emerald-800 text-white">
         <div className="mx-auto max-w-4xl px-6 py-20 text-center">
           <p className="mb-4 text-sm font-semibold uppercase tracking-wide text-emerald-300">
             {t.auditGuide.eyebrow}
@@ -82,7 +82,7 @@ export const AuditGuide = () => {
       </section>
 
       <section className="mx-auto max-w-4xl px-6 py-16">
-        <h2 className="text-center text-2xl font-bold text-blue-900 sm:text-3xl">
+        <h2 className="text-center text-2xl font-bold text-blue-950 sm:text-3xl">
           {t.auditGuide.insideTitle}
         </h2>
         <p className="mx-auto mt-3 max-w-2xl text-center text-slate-600">
@@ -95,7 +95,7 @@ export const AuditGuide = () => {
               key={flag}
               className="flex items-start gap-4 rounded-lg border border-slate-200 bg-slate-50 p-4"
             >
-              <span className="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-blue-900 text-sm font-semibold text-white">
+              <span className="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-blue-950 text-sm font-semibold text-white">
                 {index + 1}
               </span>
               <span className="pt-1 text-slate-800">{flag}</span>
@@ -112,7 +112,7 @@ export const AuditGuide = () => {
                 <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
                   ✓
                 </div>
-                <h3 className="text-xl font-semibold text-blue-900">
+                <h3 className="text-xl font-semibold text-blue-950">
                   {t.auditGuide.successTitle}
                 </h3>
                 <p className="mt-2 text-slate-600">
@@ -121,7 +121,7 @@ export const AuditGuide = () => {
               </div>
             ) : (
               <>
-                <h3 className="text-xl font-semibold text-blue-900">{t.auditGuide.formTitle}</h3>
+                <h3 className="text-xl font-semibold text-blue-950">{t.auditGuide.formTitle}</h3>
                 <p className="mt-1 text-sm text-slate-600">{t.auditGuide.formSubtitle}</p>
                 <form onSubmit={handleSubmit} className="mt-6 space-y-4">
                   <div>
@@ -176,7 +176,7 @@ export const AuditGuide = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full rounded-md bg-blue-900 px-3 py-2.5 font-semibold text-white transition hover:bg-blue-800 disabled:opacity-50"
+                    className="w-full rounded-md bg-blue-950 px-3 py-2.5 font-semibold text-white transition hover:bg-blue-900 disabled:opacity-50"
                   >
                     {isSubmitting ? t.auditGuide.submitting : t.auditGuide.submit}
                   </button>
@@ -187,7 +187,7 @@ export const AuditGuide = () => {
         </div>
       </section>
 
-      <section className="bg-blue-900 py-16 text-center text-white">
+      <section className="bg-blue-950 py-16 text-center text-white">
         <div className="mx-auto max-w-2xl px-6">
           <h2 className="text-2xl font-bold sm:text-3xl">{t.auditGuide.ctaTitle}</h2>
           <p className="mt-3 text-blue-100">{t.auditGuide.ctaBody}</p>

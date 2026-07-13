@@ -10,7 +10,7 @@ export const LanguageSwitcher = () => {
         onClick={() => setLanguage("en")}
         aria-pressed={language === "en"}
         className={`rounded-full px-2.5 py-1 transition ${
-          language === "en" ? "bg-blue-900 text-white" : "text-slate-500 hover:text-blue-800"
+          language === "en" ? "bg-blue-950 text-white" : "text-slate-500 hover:text-blue-900"
         }`}
       >
         EN
@@ -20,7 +20,7 @@ export const LanguageSwitcher = () => {
         onClick={() => setLanguage("fr")}
         aria-pressed={language === "fr"}
         className={`rounded-full px-2.5 py-1 transition ${
-          language === "fr" ? "bg-blue-900 text-white" : "text-slate-500 hover:text-blue-800"
+          language === "fr" ? "bg-blue-950 text-white" : "text-slate-500 hover:text-blue-900"
         }`}
       >
         FR
