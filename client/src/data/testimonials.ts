@@ -1,7 +1,7 @@
 import type { LocalizedText } from "./portfolio";
 
 export interface Testimonial {
-  name: string;
+  name: string | LocalizedText;
   title: string;
   company: string;
   photo: string;
@@ -9,6 +9,19 @@ export interface Testimonial {
 }
 
 export const TESTIMONIALS: Testimonial[] = [
+  {
+    name: {
+      en: "LEANOVEX Engineering Team",
+      fr: "Équipe ingénieurs LEANOVEX",
+    },
+    title: "",
+    company: "PUR",
+    photo: "/testimonials/pur.jpg",
+    quote: {
+      en: "[Placeholder quote — to be replaced with the real PUR testimonial.]",
+      fr: "[Texte provisoire — à remplacer par le vrai témoignage PUR.]",
+    },
+  },
   {
     name: "Steve Polaski",
     title: "Business Executive",
