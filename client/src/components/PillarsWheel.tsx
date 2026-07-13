@@ -20,8 +20,9 @@ export const PillarsWheel = ({ pillars }: PillarsWheelProps) => {
 
   return (
     <div className="mt-12 grid grid-cols-1 items-center gap-10 md:grid-cols-2">
-      <div className="relative mx-auto aspect-square w-full max-w-sm">
-        <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full">
+      <div>
+        <div className="relative mx-auto aspect-square w-full max-w-sm">
+          <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full">
           <circle
             cx="50"
             cy="50"
@@ -79,6 +80,10 @@ export const PillarsWheel = ({ pillars }: PillarsWheelProps) => {
             </button>
           );
         })}
+      </div>
+      <p className="mt-4 text-center text-xs font-medium text-slate-400">
+        Click a pillar to see the details
+      </p>
       </div>
 
       <div
