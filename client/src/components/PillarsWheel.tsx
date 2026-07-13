@@ -74,7 +74,7 @@ export const PillarsWheel = ({ pillars }: PillarsWheelProps) => {
               aria-pressed={isActive}
             >
               <span className="h-5 w-5 sm:h-6 sm:w-6">{pillar.icon}</span>
-              <span className="mt-1 hidden text-[9px] font-semibold leading-tight sm:block">
+              <span className="mt-1 text-sm font-bold leading-none sm:text-base">
                 {index + 1}
               </span>
             </button>
