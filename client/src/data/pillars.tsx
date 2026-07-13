@@ -4,7 +4,7 @@ export interface PillarIcon {
 }
 
 const iconProps = {
-  className: "h-7 w-7",
+  className: "h-full w-full",
   fill: "none",
   viewBox: "0 0 24 24",
   stroke: "currentColor",

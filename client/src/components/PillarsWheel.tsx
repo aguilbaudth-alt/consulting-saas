@@ -28,7 +28,7 @@ export const PillarsWheel = ({ pillars }: PillarsWheelProps) => {
           <circle
             cx="50"
             cy="50"
-            r="47"
+            r="48"
             fill="none"
             stroke="currentColor"
             strokeWidth="1.5"
@@ -37,8 +37,8 @@ export const PillarsWheel = ({ pillars }: PillarsWheelProps) => {
           />
           {ARROW_ANGLES.map((angle) => {
             const rad = (angle * Math.PI) / 180;
-            const x = 50 + 47 * Math.sin(rad);
-            const y = 50 - 47 * Math.cos(rad);
+            const x = 50 + 48 * Math.sin(rad);
+            const y = 50 - 48 * Math.cos(rad);
             return (
               <polygon
                 key={angle}
@@ -52,7 +52,7 @@ export const PillarsWheel = ({ pillars }: PillarsWheelProps) => {
 
         <div
           key={activePillar.id}
-          className="absolute left-1/2 top-1/2 flex h-60 w-60 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full bg-blue-50 px-8 text-center sm:h-80 sm:w-80 sm:px-11"
+          className="absolute left-1/2 top-1/2 flex h-64 w-64 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full bg-blue-50 px-8 text-center sm:h-96 sm:w-96 sm:px-14"
         >
           <span className="flex h-7 w-7 items-center justify-center text-blue-800 sm:h-9 sm:w-9">
             {activePillar.icon}
@@ -82,16 +82,16 @@ export const PillarsWheel = ({ pillars }: PillarsWheelProps) => {
               type="button"
               onClick={() => setActive(index)}
               style={{ top: pos.top, left: pos.left }}
-              className={`absolute flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 shadow-sm transition sm:h-20 sm:w-20 ${
+              className={`absolute flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 shadow-sm transition sm:h-20 sm:w-20 ${
                 isActive
                   ? "border-blue-900 bg-blue-900 text-white"
                   : "border-slate-200 bg-white text-blue-800 hover:border-blue-300"
               }`}
               aria-pressed={isActive}
             >
-              <span className="h-5 w-5 sm:h-7 sm:w-7">{pillar.icon}</span>
+              <span className="h-4 w-4 sm:h-7 sm:w-7">{pillar.icon}</span>
               <span
-                className={`absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full text-[10px] font-bold shadow-sm sm:h-6 sm:w-6 sm:text-xs ${
+                className={`absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full text-[8px] font-bold shadow-sm sm:h-6 sm:w-6 sm:text-xs ${
                   isActive ? "bg-white text-blue-900" : "bg-blue-900 text-white"
                 }`}
               >
