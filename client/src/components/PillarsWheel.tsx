@@ -2,10 +2,10 @@ import { useState } from "react";
 import { Pillar } from "../data/pillars";
 
 const NODE_POSITIONS = [
-  { top: "4%", left: "50%" }, // top
-  { top: "50%", left: "96%" }, // right
-  { top: "96%", left: "50%" }, // bottom
-  { top: "50%", left: "4%" }, // left
+  { top: "2%", left: "50%" }, // top
+  { top: "50%", left: "98%" }, // right
+  { top: "98%", left: "50%" }, // bottom
+  { top: "50%", left: "2%" }, // left
 ];
 
 const ARROW_ANGLES = [45, 135, 225, 315];
@@ -19,14 +19,13 @@ export const PillarsWheel = ({ pillars }: PillarsWheelProps) => {
   const activePillar = pillars[active];
 
   return (
-    <div className="mt-12 grid grid-cols-1 items-center gap-10 md:grid-cols-2">
-      <div>
-        <div className="relative mx-auto aspect-square w-full max-w-sm">
-          <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full">
+    <div className="mx-auto mt-12 max-w-lg">
+      <div className="relative mx-auto aspect-square w-full">
+        <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full">
           <circle
             cx="50"
             cy="50"
-            r="42"
+            r="44"
             fill="none"
             stroke="currentColor"
             strokeWidth="1.5"
@@ -35,8 +34,8 @@ export const PillarsWheel = ({ pillars }: PillarsWheelProps) => {
           />
           {ARROW_ANGLES.map((angle) => {
             const rad = (angle * Math.PI) / 180;
-            const x = 50 + 42 * Math.sin(rad);
-            const y = 50 - 42 * Math.cos(rad);
+            const x = 50 + 44 * Math.sin(rad);
+            const y = 50 - 44 * Math.cos(rad);
             return (
               <polygon
                 key={angle}
@@ -48,13 +47,29 @@ export const PillarsWheel = ({ pillars }: PillarsWheelProps) => {
           })}
         </svg>
 
-        <div className="absolute left-1/2 top-1/2 flex h-28 w-28 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full bg-blue-50 text-center">
-          <span className="text-sm font-bold uppercase tracking-wide text-blue-800">
-            Supplier
+        <div
+          key={activePillar.title}
+          className="absolute left-1/2 top-1/2 flex h-48 w-48 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full bg-blue-50 px-7 text-center sm:h-60 sm:w-60 sm:px-9"
+        >
+          <span className="flex h-7 w-7 items-center justify-center text-blue-800 sm:h-8 sm:w-8">
+            {activePillar.icon}
           </span>
-          <span className="text-sm font-bold uppercase tracking-wide text-blue-800">
-            Control
-          </span>
+          <h3 className="mt-1.5 text-sm font-semibold leading-tight text-blue-900 sm:text-base">
+            {activePillar.title}
+          </h3>
+          <p className="mt-1 text-[10px] italic leading-snug text-slate-500 sm:text-xs">
+            {activePillar.tagline}
+          </p>
+          <ul className="mt-2 space-y-1 sm:mt-3">
+            {activePillar.items.map((item) => (
+              <li
+                key={item}
+                className="text-[9.5px] leading-snug text-slate-700 sm:text-[11px]"
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
 
         {pillars.map((pillar, index) => {
@@ -69,7 +84,7 @@ export const PillarsWheel = ({ pillars }: PillarsWheelProps) => {
               className={`absolute flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full border-2 shadow-sm transition sm:h-20 sm:w-20 ${
                 isActive
                   ? "border-blue-900 bg-blue-900 text-white"
-                  : "border-slate-200 bg-white text-blue-800 hover:border-blue-300 hover:-translate-y-1/2"
+                  : "border-slate-200 bg-white text-blue-800 hover:border-blue-300"
               }`}
               aria-pressed={isActive}
             >
@@ -81,42 +96,23 @@ export const PillarsWheel = ({ pillars }: PillarsWheelProps) => {
           );
         })}
       </div>
-      <p className="mt-14 text-center text-xs font-medium text-slate-400">
+
+      <p className="mt-12 text-center text-xs font-medium text-slate-400">
         Click a pillar to see the details
       </p>
-      </div>
 
-      <div
-        key={activePillar.title}
-        className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8"
-      >
-        <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 text-blue-800">
-          {activePillar.icon}
-        </div>
-        <h3 className="mt-4 text-xl font-semibold text-blue-900">{activePillar.title}</h3>
-        <p className="mt-1 text-sm font-medium italic text-slate-500">{activePillar.tagline}</p>
-        <ul className="mt-5 space-y-2.5">
-          {activePillar.items.map((item) => (
-            <li key={item} className="flex items-start gap-2 text-sm text-slate-700">
-              <span className="mt-0.5 text-sky-600">✓</span>
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
-
-        <div className="mt-6 flex gap-2">
-          {pillars.map((pillar, index) => (
-            <button
-              key={pillar.title}
-              type="button"
-              onClick={() => setActive(index)}
-              aria-label={`Show ${pillar.title}`}
-              className={`h-1.5 flex-1 rounded-full transition ${
-                index === active ? "bg-blue-900" : "bg-slate-200 hover:bg-slate-300"
-              }`}
-            />
-          ))}
-        </div>
+      <div className="mt-4 flex justify-center gap-2">
+        {pillars.map((pillar, index) => (
+          <button
+            key={pillar.title}
+            type="button"
+            onClick={() => setActive(index)}
+            aria-label={`Show ${pillar.title}`}
+            className={`h-1.5 w-8 rounded-full transition ${
+              index === active ? "bg-blue-900" : "bg-slate-200 hover:bg-slate-300"
+            }`}
+          />
+        ))}
       </div>
     </div>
   );
