@@ -3,6 +3,7 @@ import { Layout } from "./components/Layout";
 import { MarketingLayout } from "./components/MarketingLayout";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { LANG_STORAGE_KEY } from "./context/LanguageContext";
+import { About } from "./pages/About";
 import { AuditGuide } from "./pages/AuditGuide";
 import { Contact } from "./pages/Contact";
 import { Home } from "./pages/Home";
@@ -37,6 +38,7 @@ const App = () => (
     <Routes>
       <Route path="/:lang" element={<LangGate />}>
         <Route index element={<Home />} />
+        <Route path="about" element={<About />} />
         <Route path="audit-guide" element={<AuditGuide />} />
         <Route path="contact" element={<Contact />} />
         <Route path="portfolio/:slug" element={<PortfolioProject />} />

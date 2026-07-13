@@ -8,6 +8,7 @@ interface PillarText {
 
 export interface Translations {
   nav: {
+    about: string;
     signIn: string;
     welcomeBack: string;
     signOut: string;
@@ -107,11 +108,23 @@ export interface Translations {
     title: string;
     subtitle: string;
   };
+  about: {
+    metaTitle: string;
+    metaDescription: string;
+    name: string;
+    role: string;
+    paragraph1: string;
+    paragraph2: string;
+    paragraph3: string;
+    ctaTitle: string;
+    ctaButton: string;
+  };
 }
 
 export const translations: Record<Language, Translations> = {
   en: {
     nav: {
+      about: "About",
       signIn: "Already a client? Sign in",
       welcomeBack: "Welcome back,",
       signOut: "Sign out",
@@ -123,7 +136,7 @@ export const translations: Record<Language, Translations> = {
     home: {
       metaTitle: "Supplier Quality Audits & Sourcing Risk Consulting in Asia",
       metaDescription:
-        "Independent supplier audits, factory inspections, and sourcing risk management across Asia. 16+ years of field experience, 500+ factories audited. Schedule a consultation.",
+        "Independent supplier audits, factory inspections, and sourcing risk management across Asia. 20+ years of field experience, 500+ factories audited. Schedule a consultation.",
       heroTitle: "Supplier Risk Control in Asia",
       heroSubtitle: "Local and independent partner in Asia to reduce your manufacturing risks",
       scheduleConsultation: "Schedule a Consultation",
@@ -131,7 +144,7 @@ export const translations: Record<Language, Translations> = {
       pillarsTitle: "Four Pillars of Supplier Risk Control",
       pillarsSubtitle:
         "A structured approach covering the full supplier lifecycle, from selection to recovery.",
-      years: "16+ years",
+      years: "20+ years",
       yearsSub: "of field experience in Asia",
       factories: "500+ factories",
       factoriesSub: "audited across Asia",
@@ -182,7 +195,7 @@ export const translations: Record<Language, Translations> = {
       title: "10 Red Flags When Sourcing Suppliers in Thailand",
       subtitle:
         "A free quality audit guide for manufacturing leaders. Spot the warning signs before they cost you a shipment, a client relationship, or your reputation.",
-      years: "16+ years",
+      years: "20+ years",
       yearsSub: "of field experience in Asia",
       factories: "500+ factories",
       factoriesSub: "audited across Thailand",
@@ -254,9 +267,25 @@ export const translations: Record<Language, Translations> = {
       title: "What our clients say",
       subtitle: "Feedback from the teams we've worked with.",
     },
+    about: {
+      metaTitle: "About the Founder",
+      metaDescription:
+        "Antoine Guilbaud, founder of LEANOVEX: 20 years of manufacturing and operations leadership across Europe and Southeast Asia.",
+      name: "Antoine Guilbaud",
+      role: "Founder & Consultant, LEANOVEX",
+      paragraph1:
+        "Manufacturing and operations leader with 20 years of experience managing complex factory ecosystems across Europe and Southeast Asia. My work has spanned automotive, aerospace, electronics, medical devices, and consumer goods, always with the same focus: scaling production, stabilizing quality, and closing the gap between engineering requirements and manufacturing execution.",
+      paragraph2:
+        "Over two decades, I've designed assembly processes for a new automotive plant, led Lean Manufacturing improvements on a major aircraft program, directed engineering and quality systems for a large-scale electronics plant, transferred a medical device production line into a new factory, and led manufacturing quality and new product introduction for a global consumer electronics manufacturer across multiple factories in Southeast Asia.",
+      paragraph3:
+        "I founded LEANOVEX in 2014 to bring that same combination of rigorous, standardized methodology and hands-on factory experience to companies sourcing and manufacturing in Asia. I'm a certified ISO 9001 internal auditor, and a strong advocate of Lean, Agile, and data-driven decision making.",
+      ctaTitle: "Facing supplier or manufacturing risk in Asia?",
+      ctaButton: "Schedule a Consultation",
+    },
   },
   fr: {
     nav: {
+      about: "À propos",
       signIn: "Déjà client ? Se connecter",
       welcomeBack: "Bon retour,",
       signOut: "Se déconnecter",
@@ -268,7 +297,7 @@ export const translations: Record<Language, Translations> = {
     home: {
       metaTitle: "Audits Qualité Fournisseurs & Conseil en Risque d'Approvisionnement en Asie",
       metaDescription:
-        "Audits fournisseurs indépendants, inspections d'usines et gestion du risque d'approvisionnement en Asie. 16+ ans d'expérience terrain, 500+ usines auditées. Planifiez une consultation.",
+        "Audits fournisseurs indépendants, inspections d'usines et gestion du risque d'approvisionnement en Asie. 20+ ans d'expérience terrain, 500+ usines auditées. Planifiez une consultation.",
       heroTitle: "Maîtrise du risque fournisseur en Asie",
       heroSubtitle:
         "Partenaire local et indépendant en Asie pour réduire vos risques de fabrication",
@@ -277,7 +306,7 @@ export const translations: Record<Language, Translations> = {
       pillarsTitle: "Quatre piliers de la maîtrise du risque fournisseur",
       pillarsSubtitle:
         "Une approche structurée couvrant tout le cycle de vie du fournisseur, de la sélection à la remédiation.",
-      years: "16+ ans",
+      years: "20+ ans",
       yearsSub: "d'expérience terrain en Asie",
       factories: "500+ usines",
       factoriesSub: "auditées à travers l'Asie",
@@ -332,7 +361,7 @@ export const translations: Record<Language, Translations> = {
       title: "10 signaux d'alerte lors du sourcing de fournisseurs en Thaïlande",
       subtitle:
         "Un guide d'audit qualité gratuit pour les responsables de production. Repérez les signaux d'alerte avant qu'ils ne vous coûtent une expédition, une relation client ou votre réputation.",
-      years: "16+ ans",
+      years: "20+ ans",
       yearsSub: "d'expérience terrain en Asie",
       factories: "500+ usines",
       factoriesSub: "auditées en Thaïlande",
@@ -404,6 +433,21 @@ export const translations: Record<Language, Translations> = {
     testimonials: {
       title: "Ce que disent nos clients",
       subtitle: "Les retours des équipes avec lesquelles nous avons travaillé.",
+    },
+    about: {
+      metaTitle: "À propos du fondateur",
+      metaDescription:
+        "Antoine Guilbaud, fondateur de LEANOVEX : 20 ans d'expérience en direction industrielle et opérations en Europe et en Asie du Sud-Est.",
+      name: "Antoine Guilbaud",
+      role: "Fondateur & Consultant, LEANOVEX",
+      paragraph1:
+        "Responsable industriel et opérations avec 20 ans d'expérience dans la gestion d'écosystèmes industriels complexes en Europe et en Asie du Sud-Est. Mon parcours a couvert l'automobile, l'aéronautique, l'électronique, le dispositif médical et les biens de consommation, toujours avec le même objectif : monter en cadence la production, stabiliser la qualité, et faire le lien entre les exigences d'ingénierie et l'exécution industrielle.",
+      paragraph2:
+        "En vingt ans, j'ai conçu des processus d'assemblage pour une nouvelle usine automobile, mené des chantiers d'amélioration Lean sur un programme aéronautique majeur, dirigé l'ingénierie et les systèmes qualité d'une usine électronique de grande envergure, transféré une ligne de production de dispositifs médicaux vers une nouvelle usine, et piloté la qualité industrielle et l'introduction de nouveaux produits pour un fabricant mondial d'électronique grand public, à travers plusieurs usines en Asie du Sud-Est.",
+      paragraph3:
+        "J'ai fondé LEANOVEX en 2014 pour apporter cette même combinaison de méthodologie rigoureuse et standardisée et d'expérience terrain aux entreprises qui sourcent et fabriquent en Asie. Je suis auditeur interne certifié ISO 9001, et un fervent défenseur du Lean, de l'Agile et de la prise de décision fondée sur la donnée.",
+      ctaTitle: "Face à un risque fournisseur ou industriel en Asie ?",
+      ctaButton: "Planifier une consultation",
     },
   },
 };

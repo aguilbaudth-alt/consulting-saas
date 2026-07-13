@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 const SITE_URL = "https://www.leanovex.com";
 const DEFAULT_TITLE = "LEANOVEX Consulting";
 const DEFAULT_DESCRIPTION =
-  "Supplier quality audits and sourcing risk consulting across Asia. 16+ years of field experience, 500+ factories audited.";
+  "Supplier quality audits and sourcing risk consulting across Asia. 20+ years of field experience, 500+ factories audited.";
 
 const setLink = (rel: string, hreflang: string | null, href: string) => {
   const selector = hreflang ? `link[rel="${rel}"][hreflang="${hreflang}"]` : `link[rel="${rel}"]`;

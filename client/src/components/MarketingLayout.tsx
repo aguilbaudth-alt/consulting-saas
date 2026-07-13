@@ -15,6 +15,12 @@ export const MarketingLayout = () => {
             LEANOVEX Consulting
           </Link>
           <div className="flex items-center gap-4">
+            <Link
+              to={`/${language}/about`}
+              className="hidden text-sm font-medium text-slate-600 hover:text-blue-800 sm:inline"
+            >
+              {t.nav.about}
+            </Link>
             <LanguageSwitcher />
             {user ? (
               <div className="flex items-center gap-4 text-sm text-slate-600">
