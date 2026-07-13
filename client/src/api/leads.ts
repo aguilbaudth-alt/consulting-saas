@@ -5,6 +5,7 @@ interface LeadPayload {
   phone?: string;
   message?: string;
   source: "audit-guide" | "contact";
+  lang?: "en" | "fr";
 }
 
 /**

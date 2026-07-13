@@ -1,7 +1,5 @@
-export interface Pillar {
-  title: string;
-  tagline: string;
-  items: string[];
+export interface PillarIcon {
+  id: "supplier-selection" | "production-readiness" | "monitoring-improvement" | "crisis-recovery";
   icon: JSX.Element;
 }
 
@@ -13,11 +11,9 @@ const iconProps = {
   strokeWidth: 1.75,
 };
 
-export const PILLARS: Pillar[] = [
+export const PILLARS: PillarIcon[] = [
   {
-    title: "Supplier Selection",
-    tagline: "Avoid choosing the wrong supplier",
-    items: ["Factory on-site verification", "RFQ support", "HSE/ESG compliance check"],
+    id: "supplier-selection",
     icon: (
       <svg {...iconProps}>
         <path
@@ -29,9 +25,7 @@ export const PILLARS: Pillar[] = [
     ),
   },
   {
-    title: "Production Readiness",
-    tagline: "Ensure successful ramp-up",
-    items: ["NPI local support", "Pilot production supervision", "Run-at-rate validation"],
+    id: "production-readiness",
     icon: (
       <svg {...iconProps}>
         <path
@@ -43,9 +37,7 @@ export const PILLARS: Pillar[] = [
     ),
   },
   {
-    title: "Monitoring & Improvement",
-    tagline: "Detect risks before they escalate",
-    items: ["Periodic supplier audit", "KPI monitoring", "ESG checks"],
+    id: "monitoring-improvement",
     icon: (
       <svg {...iconProps}>
         <path
@@ -57,9 +49,7 @@ export const PILLARS: Pillar[] = [
     ),
   },
   {
-    title: "Crisis & Recovery",
-    tagline: "Resolve supplier issues quickly",
-    items: ["Root cause investigation", "Supplier recovery support", "Corrective action verification"],
+    id: "crisis-recovery",
     icon: (
       <svg {...iconProps}>
         <path

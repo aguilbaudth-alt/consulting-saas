@@ -1,19 +1,7 @@
 import { FormEvent, useState } from "react";
 import { Link } from "react-router-dom";
 import { submitLead } from "../api/leads";
-
-const RED_FLAGS = [
-  "Unrealistic lead time guarantees",
-  "Inconsistent production records",
-  "Excessive subcontracting",
-  "Poor communication with technical staff",
-  "No documented quality control process",
-  "Owner handles everything personally",
-  "No material or lot traceability",
-  "Blind agreement to all requests",
-  "High operator turnover",
-  "Pushing for big orders too fast",
-];
+import { useLanguage } from "../context/LanguageContext";
 
 interface FormState {
   name: string;
@@ -25,6 +13,7 @@ interface FormState {
 const initialForm: FormState = { name: "", email: "", company: "", phone: "" };
 
 export const AuditGuide = () => {
+  const { t, language } = useLanguage();
   const [form, setForm] = useState<FormState>(initialForm);
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -37,7 +26,7 @@ export const AuditGuide = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!form.name || !form.email || !form.company) {
-      setError("Please fill in your name, email, and company name.");
+      setError(t.auditGuide.requiredError);
       return;
     }
     setError(null);
@@ -49,11 +38,12 @@ export const AuditGuide = () => {
         company: form.company,
         phone: form.phone || undefined,
         source: "audit-guide",
+        lang: language,
       });
       setSubmitted(true);
     } catch (err) {
       console.error("[AuditGuide] Failed to submit guide request:", err);
-      setError("Something went wrong. Please try again in a moment.");
+      setError(t.auditGuide.genericError);
     } finally {
       setIsSubmitting(false);
     }
@@ -64,22 +54,17 @@ export const AuditGuide = () => {
       <section className="bg-gradient-to-br from-blue-900 via-blue-800 to-emerald-800 text-white">
         <div className="mx-auto max-w-4xl px-6 py-20 text-center">
           <p className="mb-4 text-sm font-semibold uppercase tracking-wide text-emerald-300">
-            Free Quality Audit Guide
+            {t.auditGuide.eyebrow}
           </p>
-          <h1 className="text-3xl font-bold leading-tight sm:text-5xl">
-            10 Red Flags When Sourcing Suppliers in Thailand
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-blue-100">
-            A free quality audit guide for manufacturing leaders. Spot the warning signs before
-            they cost you a shipment, a client relationship, or your reputation.
-          </p>
+          <h1 className="text-3xl font-bold leading-tight sm:text-5xl">{t.auditGuide.title}</h1>
+          <p className="mx-auto mt-6 max-w-2xl text-lg text-blue-100">{t.auditGuide.subtitle}</p>
 
           <div className="mx-auto mt-10 inline-flex flex-col items-center gap-2 rounded-xl bg-white/10 px-6 py-4 backdrop-blur sm:flex-row sm:gap-6">
-            <span className="text-2xl font-bold text-emerald-300">16+ years</span>
-            <span className="hidden text-blue-200 sm:inline">of field experience in Asia</span>
+            <span className="text-2xl font-bold text-emerald-300">{t.auditGuide.years}</span>
+            <span className="hidden text-blue-200 sm:inline">{t.auditGuide.yearsSub}</span>
             <span className="hidden h-6 w-px bg-blue-300/40 sm:inline-block" />
-            <span className="text-2xl font-bold text-emerald-300">500+ factories</span>
-            <span className="hidden text-blue-200 sm:inline">audited across Thailand</span>
+            <span className="text-2xl font-bold text-emerald-300">{t.auditGuide.factories}</span>
+            <span className="hidden text-blue-200 sm:inline">{t.auditGuide.factoriesSub}</span>
           </div>
 
           <div className="mt-10">
@@ -87,7 +72,7 @@ export const AuditGuide = () => {
               href="#get-guide"
               className="inline-block rounded-md bg-emerald-500 px-8 py-3 text-base font-semibold text-white shadow-lg shadow-emerald-900/30 transition hover:bg-emerald-400"
             >
-              Get the Free Guide
+              {t.auditGuide.getGuideCta}
             </a>
           </div>
         </div>
@@ -95,15 +80,14 @@ export const AuditGuide = () => {
 
       <section className="mx-auto max-w-4xl px-6 py-16">
         <h2 className="text-center text-2xl font-bold text-blue-900 sm:text-3xl">
-          What's Inside the Guide
+          {t.auditGuide.insideTitle}
         </h2>
         <p className="mx-auto mt-3 max-w-2xl text-center text-slate-600">
-          Ten warning signs, drawn from hundreds of factory audits, that reveal supplier risk
-          before you place a purchase order.
+          {t.auditGuide.insideSubtitle}
         </p>
 
         <ol className="mt-10 space-y-4">
-          {RED_FLAGS.map((flag, index) => (
+          {t.auditGuide.redFlags.map((flag, index) => (
             <li
               key={flag}
               className="flex items-start gap-4 rounded-lg border border-slate-200 bg-slate-50 p-4"
@@ -125,21 +109,22 @@ export const AuditGuide = () => {
                 <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
                   ✓
                 </div>
-                <h3 className="text-xl font-semibold text-blue-900">You're all set!</h3>
+                <h3 className="text-xl font-semibold text-blue-900">
+                  {t.auditGuide.successTitle}
+                </h3>
                 <p className="mt-2 text-slate-600">
-                  Thanks, {form.name.split(" ")[0]}. Check your inbox at {form.email}, your free
-                  guide is on its way.
+                  {t.auditGuide.successBody} {form.email}, {t.auditGuide.successBodyEnd}
                 </p>
               </div>
             ) : (
               <>
-                <h3 className="text-xl font-semibold text-blue-900">Get Your Free Guide</h3>
-                <p className="mt-1 text-sm text-slate-600">
-                  Enter your details and we'll send the guide straight to your inbox.
-                </p>
+                <h3 className="text-xl font-semibold text-blue-900">{t.auditGuide.formTitle}</h3>
+                <p className="mt-1 text-sm text-slate-600">{t.auditGuide.formSubtitle}</p>
                 <form onSubmit={handleSubmit} className="mt-6 space-y-4">
                   <div>
-                    <label className="block text-sm font-medium text-slate-700">Name</label>
+                    <label className="block text-sm font-medium text-slate-700">
+                      {t.auditGuide.fieldName}
+                    </label>
                     <input
                       type="text"
                       required
@@ -149,7 +134,9 @@ export const AuditGuide = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-slate-700">Email</label>
+                    <label className="block text-sm font-medium text-slate-700">
+                      {t.auditGuide.fieldEmail}
+                    </label>
                     <input
                       type="email"
                       required
@@ -160,7 +147,7 @@ export const AuditGuide = () => {
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-slate-700">
-                      Company Name
+                      {t.auditGuide.fieldCompany}
                     </label>
                     <input
                       type="text"
@@ -172,7 +159,8 @@ export const AuditGuide = () => {
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-slate-700">
-                      Phone <span className="font-normal text-slate-400">(optional)</span>
+                      {t.auditGuide.fieldPhone}{" "}
+                      <span className="font-normal text-slate-400">{t.auditGuide.optional}</span>
                     </label>
                     <input
                       type="tel"
@@ -187,7 +175,7 @@ export const AuditGuide = () => {
                     disabled={isSubmitting}
                     className="w-full rounded-md bg-blue-900 px-3 py-2.5 font-semibold text-white transition hover:bg-blue-800 disabled:opacity-50"
                   >
-                    {isSubmitting ? "Sending..." : "Get Free Guide"}
+                    {isSubmitting ? t.auditGuide.submitting : t.auditGuide.submit}
                   </button>
                 </form>
               </>
@@ -198,18 +186,13 @@ export const AuditGuide = () => {
 
       <section className="bg-blue-900 py-16 text-center text-white">
         <div className="mx-auto max-w-2xl px-6">
-          <h2 className="text-2xl font-bold sm:text-3xl">
-            Ready for a Professional Supplier Audit?
-          </h2>
-          <p className="mt-3 text-blue-100">
-            Let our team assess your current suppliers and flag risks before they become
-            problems.
-          </p>
+          <h2 className="text-2xl font-bold sm:text-3xl">{t.auditGuide.ctaTitle}</h2>
+          <p className="mt-3 text-blue-100">{t.auditGuide.ctaBody}</p>
           <Link
             to="/contact"
             className="mt-8 inline-block rounded-md bg-emerald-500 px-8 py-3 font-semibold text-white shadow-lg shadow-emerald-900/30 transition hover:bg-emerald-400"
           >
-            Schedule a Consultation
+            {t.auditGuide.ctaButton}
           </Link>
         </div>
       </section>

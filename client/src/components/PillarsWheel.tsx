@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Pillar } from "../data/pillars";
+import { useLanguage } from "../context/LanguageContext";
+import { PillarIcon } from "../data/pillars";
 
 const NODE_POSITIONS = [
   { top: "2%", left: "50%" }, // top
@@ -11,12 +12,14 @@ const NODE_POSITIONS = [
 const ARROW_ANGLES = [45, 135, 225, 315];
 
 interface PillarsWheelProps {
-  pillars: Pillar[];
+  pillars: PillarIcon[];
 }
 
 export const PillarsWheel = ({ pillars }: PillarsWheelProps) => {
   const [active, setActive] = useState(0);
+  const { t } = useLanguage();
   const activePillar = pillars[active];
+  const activeText = t.pillars[activePillar.id];
 
   return (
     <div className="mx-auto mt-12 max-w-lg">
@@ -48,25 +51,22 @@ export const PillarsWheel = ({ pillars }: PillarsWheelProps) => {
         </svg>
 
         <div
-          key={activePillar.title}
+          key={activePillar.id}
           className="absolute left-1/2 top-1/2 flex h-52 w-52 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full bg-blue-50 px-7 text-center sm:h-72 sm:w-72 sm:px-10"
         >
           <span className="flex h-7 w-7 items-center justify-center text-blue-800 sm:h-9 sm:w-9">
             {activePillar.icon}
           </span>
           <h3 className="mt-1.5 text-base font-bold leading-tight text-blue-900 sm:mt-2 sm:text-lg">
-            {activePillar.title}
+            {activeText.title}
           </h3>
           <p className="mt-1 text-xs italic leading-snug text-slate-500 sm:mt-1.5 sm:text-sm">
-            {activePillar.tagline}
+            {activeText.tagline}
           </p>
           <div className="mt-2.5 w-16 border-t border-blue-200 sm:mt-3 sm:w-20" />
           <ul className="mt-2.5 space-y-1 sm:mt-3 sm:space-y-1.5">
-            {activePillar.items.map((item) => (
-              <li
-                key={item}
-                className="text-[11px] leading-snug text-slate-600 sm:text-sm"
-              >
+            {activeText.items.map((item) => (
+              <li key={item} className="text-[11px] leading-snug text-slate-600 sm:text-sm">
                 {item}
               </li>
             ))}
@@ -78,7 +78,7 @@ export const PillarsWheel = ({ pillars }: PillarsWheelProps) => {
           const isActive = index === active;
           return (
             <button
-              key={pillar.title}
+              key={pillar.id}
               type="button"
               onClick={() => setActive(index)}
               style={{ top: pos.top, left: pos.left }}
@@ -103,16 +103,16 @@ export const PillarsWheel = ({ pillars }: PillarsWheelProps) => {
       </div>
 
       <p className="mt-12 text-center text-xs font-medium text-slate-400">
-        Click a pillar to see the details
+        {t.wheel.clickPillar}
       </p>
 
       <div className="mt-4 flex justify-center gap-2">
         {pillars.map((pillar, index) => (
           <button
-            key={pillar.title}
+            key={pillar.id}
             type="button"
             onClick={() => setActive(index)}
-            aria-label={`Show ${pillar.title}`}
+            aria-label={`Show ${t.pillars[pillar.id].title}`}
             className={`h-1.5 w-8 rounded-full transition ${
               index === active ? "bg-blue-900" : "bg-slate-200 hover:bg-slate-300"
             }`}

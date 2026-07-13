@@ -4,10 +4,10 @@
  *
  * SETUP
  * 1. Create a Google Sheet. Rename the first tab to "Leads" and add a header row:
- *    Timestamp | Source | Name | Email | Company | Phone | Message
+ *    Timestamp | Source | Name | Email | Company | Phone | Message | Lang | Email Status | Notify Status
  * 2. In the Sheet: Extensions > Apps Script. Delete the default content and paste this file.
- * 3. Upload the guide PDF (Supplier_Audit_Guide_Thailand.pdf) to your Google Drive,
- *    open it, copy the file ID from the URL, and paste it into GUIDE_FILE_ID below.
+ * 3. The guide PDF lives in the repo at client/public/guides/ and is served as a static
+ *    asset by the site itself — GUIDE_PDF_URL below just points at it, no Drive upload needed.
  * 4. Update OWNER_EMAIL below to the inbox that should receive lead notifications.
  * 5. Deploy > New deployment > type "Web app".
  *    - Execute as: Me
@@ -19,91 +19,160 @@
 
 const SHEET_NAME = "Leads";
 const OWNER_EMAIL = "aguilbaud.th@gmail.com";
-const GUIDE_FILE_ID = "REPLACE_WITH_YOUR_DRIVE_FILE_ID";
+const GUIDE_PDF_URL = "https://leanovex.com/guides/Supplier_Audit_Guide_Thailand.pdf";
 
 const SOURCE_LABELS = {
   "audit-guide": "Guide download",
   contact: "Consultation request",
 };
 
+const EMAIL_TEMPLATES = {
+  en: {
+    guideSubject: "Your guide: 10 Red Flags When Sourcing Suppliers in Thailand",
+    guideBody: function (name) {
+      return (
+        "<p>Hi " +
+        name +
+        ",</p>" +
+        "<p>Thanks for requesting the guide. It's attached to this email as a PDF, drawn from " +
+        "16+ years of field experience across 500+ factory audits in Asia.</p>" +
+        "<p>If you'd like a second set of eyes on your current suppliers, just reply to this " +
+        "email to schedule a consultation.</p>" +
+        "<p>Best,<br>Antoine</p>"
+      );
+    },
+    contactSubject: "We've received your consultation request",
+    contactBody: function (name) {
+      return (
+        "<p>Hi " +
+        name +
+        ",</p>" +
+        "<p>Thanks for your message. I've received your request for a consultation and will " +
+        "follow up within one business day to find a time that works.</p>" +
+        "<p>Best,<br>Antoine</p>"
+      );
+    },
+  },
+  fr: {
+    guideSubject: "Votre guide : 10 signaux d'alerte lors du sourcing de fournisseurs en Thaïlande",
+    guideBody: function (name) {
+      return (
+        "<p>Bonjour " +
+        name +
+        ",</p>" +
+        "<p>Merci pour votre demande de guide. Il est joint à cet email au format PDF, basé sur " +
+        "16 années d'expérience terrain et plus de 500 audits d'usines en Asie.</p>" +
+        "<p>Si vous souhaitez un second avis sur vos fournisseurs actuels, répondez simplement à cet " +
+        "email pour planifier une consultation.</p>" +
+        "<p>Cordialement,<br>Antoine</p>"
+      );
+    },
+    contactSubject: "Nous avons bien reçu votre demande de consultation",
+    contactBody: function (name) {
+      return (
+        "<p>Bonjour " +
+        name +
+        ",</p>" +
+        "<p>Merci pour votre message. J'ai bien reçu votre demande de consultation et reviendrai " +
+        "vers vous sous un jour ouvré pour trouver un créneau qui vous convient.</p>" +
+        "<p>Cordialement,<br>Antoine</p>"
+      );
+    },
+  },
+};
+
+function getTemplate(lang) {
+  return EMAIL_TEMPLATES[lang] || EMAIL_TEMPLATES.en;
+}
+
 function doPost(e) {
   const data = JSON.parse(e.postData.contents);
   const { name, email, company, phone, message, source } = data;
+  const lang = data.lang === "fr" ? "fr" : "en";
 
   if (!name || !email || !company || !source) {
     return jsonResponse({ ok: false, error: "Missing required fields" });
   }
 
-  appendRow({ name, email, company, phone, message, source });
-
-  let emailSent = true;
+  let emailStatus = "sent";
   try {
     if (source === "audit-guide") {
-      sendGuideEmail(email, name);
+      sendGuideEmail(email, name, lang);
     } else if (source === "contact") {
-      sendContactAcknowledgement(email, name);
+      sendContactAcknowledgement(email, name, lang);
     }
   } catch (err) {
-    emailSent = false;
-    Logger.log("Failed to send visitor email: " + err);
+    emailStatus = "FAILED: " + err.message;
   }
 
+  let notifyStatus = "sent";
   try {
-    sendOwnerNotification({ name, email, company, phone, message, source });
+    sendOwnerNotification({ name, email, company, phone, message, source, lang });
   } catch (err) {
-    Logger.log("Failed to send owner notification: " + err);
+    notifyStatus = "FAILED: " + err.message;
   }
 
-  return jsonResponse({ ok: true, emailSent });
+  appendRow({ name, email, company, phone, message, source, lang, emailStatus, notifyStatus });
+
+  return jsonResponse({ ok: true, emailSent: emailStatus === "sent" });
 }
 
-function appendRow({ name, email, company, phone, message, source }) {
+function appendRow({ name, email, company, phone, message, source, lang, emailStatus, notifyStatus }) {
   const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(SHEET_NAME);
-  sheet.appendRow([new Date(), source, name, email, company, phone || "", message || ""]);
+  sheet.appendRow([
+    new Date(),
+    source,
+    name,
+    email,
+    company,
+    phone || "",
+    message || "",
+    lang,
+    emailStatus,
+    notifyStatus,
+  ]);
 }
 
-function sendGuideEmail(to, name) {
-  const attachments = [];
-  if (GUIDE_FILE_ID && GUIDE_FILE_ID !== "REPLACE_WITH_YOUR_DRIVE_FILE_ID") {
-    attachments.push(DriveApp.getFileById(GUIDE_FILE_ID).getBlob());
-  }
+function sendGuideEmail(to, name, lang) {
+  const template = getTemplate(lang);
+  const attachments = [
+    UrlFetchApp.fetch(GUIDE_PDF_URL).getBlob().setName("Supplier_Audit_Guide_Thailand.pdf"),
+  ];
 
   MailApp.sendEmail({
     to,
-    subject: "Your guide: 10 Red Flags When Sourcing Suppliers in Thailand",
-    htmlBody:
-      "<p>Hi " +
-      name +
-      ",</p>" +
-      "<p>Thanks for requesting the guide. It's attached to this email as a PDF, drawn from " +
-      "16+ years of field experience across 500+ factory audits in Asia.</p>" +
-      "<p>If you'd like a second set of eyes on your current suppliers, just reply to this " +
-      "email to schedule a consultation.</p>" +
-      "<p>Best,<br>Antoine</p>",
+    subject: template.guideSubject,
+    htmlBody: template.guideBody(name),
     name: "LEANOVEX Consulting",
     attachments,
   });
 }
 
-function sendContactAcknowledgement(to, name) {
+function sendContactAcknowledgement(to, name, lang) {
+  const template = getTemplate(lang);
+
   MailApp.sendEmail({
     to,
-    subject: "We've received your consultation request",
-    htmlBody:
-      "<p>Hi " +
-      name +
-      ",</p>" +
-      "<p>Thanks for your message — I've received your request for a consultation and will " +
-      "follow up within one business day to find a time that works.</p>" +
-      "<p>Best,<br>Antoine</p>",
+    subject: template.contactSubject,
+    htmlBody: template.contactBody(name),
     name: "LEANOVEX Consulting",
   });
 }
 
-function sendOwnerNotification({ name, email, company, phone, message, source }) {
+function sendOwnerNotification({ name, email, company, phone, message, source, lang }) {
   const label = SOURCE_LABELS[source] || source;
   let body =
-    "New lead: " + label + "\n\n" + "Name: " + name + "\nEmail: " + email + "\nCompany: " + company;
+    "New lead: " +
+    label +
+    " (" +
+    lang +
+    ")\n\n" +
+    "Name: " +
+    name +
+    "\nEmail: " +
+    email +
+    "\nCompany: " +
+    company;
   if (phone) body += "\nPhone: " + phone;
   if (message) body += "\n\nMessage:\n" + message;
 

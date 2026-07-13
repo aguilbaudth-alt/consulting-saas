@@ -1,5 +1,6 @@
 import { FormEvent, useState } from "react";
 import { submitLead } from "../api/leads";
+import { useLanguage } from "../context/LanguageContext";
 
 interface FormState {
   name: string;
@@ -11,6 +12,7 @@ interface FormState {
 const initialForm: FormState = { name: "", email: "", company: "", message: "" };
 
 export const Contact = () => {
+  const { t, language } = useLanguage();
   const [form, setForm] = useState<FormState>(initialForm);
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -25,17 +27,17 @@ export const Contact = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!form.name || !form.email || !form.company || !form.message) {
-      setError("Please fill in all fields.");
+      setError(t.contact.requiredError);
       return;
     }
     setError(null);
     setIsSubmitting(true);
     try {
-      await submitLead({ ...form, source: "contact" });
+      await submitLead({ ...form, source: "contact", lang: language });
       setSubmitted(true);
     } catch (err) {
       console.error("[Contact] Failed to submit consultation request:", err);
-      setError("Something went wrong. Please try again in a moment.");
+      setError(t.contact.genericError);
     } finally {
       setIsSubmitting(false);
     }
@@ -45,10 +47,8 @@ export const Contact = () => {
     <section className="bg-slate-50 py-16">
       <div className="mx-auto max-w-2xl px-6">
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-blue-900">Schedule a Consultation</h1>
-          <p className="mt-3 text-slate-600">
-            Tell us a bit about your supply chain and we'll follow up within one business day.
-          </p>
+          <h1 className="text-3xl font-bold text-blue-900">{t.contact.title}</h1>
+          <p className="mt-3 text-slate-600">{t.contact.subtitle}</p>
         </div>
 
         <div className="mt-10 rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
@@ -57,16 +57,18 @@ export const Contact = () => {
               <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
                 ✓
               </div>
-              <h2 className="text-xl font-semibold text-blue-900">Message received</h2>
+              <h2 className="text-xl font-semibold text-blue-900">{t.contact.successTitle}</h2>
               <p className="mt-2 text-slate-600">
-                Thanks, {form.name.split(" ")[0]}. We've sent a confirmation to {form.email} and
-                will be in touch shortly.
+                {t.contact.successBody} {form.name.split(" ")[0]}. {t.contact.successBodyMid}{" "}
+                {form.email} {t.contact.successBodyEnd}
               </p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-slate-700">Name</label>
+                <label className="block text-sm font-medium text-slate-700">
+                  {t.contact.fieldName}
+                </label>
                 <input
                   type="text"
                   required
@@ -76,7 +78,9 @@ export const Contact = () => {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-slate-700">Email</label>
+                <label className="block text-sm font-medium text-slate-700">
+                  {t.contact.fieldEmail}
+                </label>
                 <input
                   type="email"
                   required
@@ -86,7 +90,9 @@ export const Contact = () => {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-slate-700">Company Name</label>
+                <label className="block text-sm font-medium text-slate-700">
+                  {t.contact.fieldCompany}
+                </label>
                 <input
                   type="text"
                   required
@@ -96,13 +102,15 @@ export const Contact = () => {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-slate-700">Message</label>
+                <label className="block text-sm font-medium text-slate-700">
+                  {t.contact.fieldMessage}
+                </label>
                 <textarea
                   required
                   rows={4}
                   value={form.message}
                   onChange={handleChange("message")}
-                  placeholder="What supplier challenges are you facing?"
+                  placeholder={t.contact.messagePlaceholder}
                   className="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 focus:border-blue-600 focus:outline-none focus:ring-1 focus:ring-blue-600"
                 />
               </div>
@@ -112,7 +120,7 @@ export const Contact = () => {
                 disabled={isSubmitting}
                 className="w-full rounded-md bg-blue-900 px-3 py-2.5 font-semibold text-white transition hover:bg-blue-800 disabled:opacity-50"
               >
-                {isSubmitting ? "Sending..." : "Request Consultation"}
+                {isSubmitting ? t.contact.submitting : t.contact.submit}
               </button>
             </form>
           )}

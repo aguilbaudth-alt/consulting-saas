@@ -1,9 +1,11 @@
 import { Link, Navigate, useParams } from "react-router-dom";
 import { ClientLogo } from "../components/ClientLogo";
+import { useLanguage } from "../context/LanguageContext";
 import { PORTFOLIO_PROJECTS } from "../data/portfolio";
 import { usePageMeta } from "../hooks/usePageMeta";
 
 export const PortfolioProject = () => {
+  const { t } = useLanguage();
   const { slug } = useParams();
   const project = PORTFOLIO_PROJECTS.find((p) => p.slug === slug);
 
@@ -20,7 +22,7 @@ export const PortfolioProject = () => {
     <section className="bg-white py-16">
       <div className="mx-auto max-w-3xl px-6">
         <Link to="/#portfolio" className="text-sm font-medium text-slate-500 hover:text-blue-800">
-          ← Back to portfolio
+          ← {t.portfolio.back}
         </Link>
 
         <div className="mt-6 flex h-24 w-full items-center justify-center">
@@ -49,27 +51,27 @@ export const PortfolioProject = () => {
 
         {!project.challenge && !project.approach && !project.results && (
           <div className="mt-8 rounded-2xl border border-slate-200 bg-slate-50 p-8 text-slate-600">
-            {project.description ?? "Project description coming soon."}
+            {project.description ?? t.portfolio.comingSoon}
           </div>
         )}
 
         {project.challenge && (
           <div className="mt-10">
-            <h2 className="text-xl font-semibold text-blue-900">The Challenge</h2>
+            <h2 className="text-xl font-semibold text-blue-900">{t.portfolio.challenge}</h2>
             <p className="mt-3 text-slate-600">{project.challenge}</p>
           </div>
         )}
 
         {project.approach && (
           <div className="mt-10">
-            <h2 className="text-xl font-semibold text-blue-900">Our Approach</h2>
+            <h2 className="text-xl font-semibold text-blue-900">{t.portfolio.approach}</h2>
             <p className="mt-3 text-slate-600">{project.approach}</p>
           </div>
         )}
 
         {project.results && project.results.length > 0 && (
           <div className="mt-10">
-            <h2 className="text-xl font-semibold text-blue-900">Results</h2>
+            <h2 className="text-xl font-semibold text-blue-900">{t.portfolio.results}</h2>
             <ul className="mt-3 space-y-2">
               {project.results.map((result) => (
                 <li key={result} className="flex gap-2 text-slate-600">
@@ -82,12 +84,12 @@ export const PortfolioProject = () => {
         )}
 
         <div className="mt-12 rounded-2xl bg-blue-900 px-8 py-8 text-center text-white">
-          <p className="text-lg font-semibold">Facing similar supplier risks?</p>
+          <p className="text-lg font-semibold">{t.portfolio.ctaTitle}</p>
           <Link
             to="/contact"
             className="mt-4 inline-block rounded-md bg-sky-500 px-6 py-2.5 font-semibold text-white shadow-lg shadow-sky-900/30 transition hover:bg-sky-400"
           >
-            Schedule a Consultation
+            {t.portfolio.ctaButton}
           </Link>
         </div>
       </div>
