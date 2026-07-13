@@ -6,11 +6,15 @@ export const ScrollToTop = () => {
 
   useEffect(() => {
     if (hash) {
-      const el = document.getElementById(hash.slice(1));
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth" });
-        return;
-      }
+      const id = hash.slice(1);
+      // Wait for layout to settle after the route change before measuring the
+      // target element's position, otherwise scrollIntoView can compute 0.
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+        });
+      });
+      return;
     }
     window.scrollTo(0, 0);
   }, [pathname, hash]);
