@@ -23,6 +23,10 @@ export const PillarsWheel = ({ pillars }: PillarsWheelProps) => {
 
   return (
     <div className="mx-auto mt-12 max-w-lg">
+      <p className="mb-12 text-center text-xs font-medium text-slate-400">
+        {t.wheel.clickPillar}
+      </p>
+
       <div className="relative mx-auto aspect-square w-full">
         <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full">
           <circle
@@ -102,11 +106,7 @@ export const PillarsWheel = ({ pillars }: PillarsWheelProps) => {
         })}
       </div>
 
-      <p className="mt-12 text-center text-xs font-medium text-slate-400">
-        {t.wheel.clickPillar}
-      </p>
-
-      <div className="mt-4 flex justify-center gap-2">
+      <div className="mt-12 flex justify-center gap-2">
         {pillars.map((pillar, index) => (
           <button
             key={pillar.id}
