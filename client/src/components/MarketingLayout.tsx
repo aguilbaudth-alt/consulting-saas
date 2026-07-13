@@ -46,15 +46,18 @@ export const MarketingLayout = () => {
             {signInArea}
           </div>
 
-          <button
-            type="button"
-            onClick={() => setMenuOpen((open) => !open)}
-            aria-label="Toggle menu"
-            aria-expanded={menuOpen}
-            className="flex h-9 w-9 items-center justify-center rounded-md border border-slate-200 text-slate-600 sm:hidden"
-          >
-            {menuOpen ? "✕" : "☰"}
-          </button>
+          <div className="flex items-center gap-3 sm:hidden">
+            <LanguageSwitcher />
+            <button
+              type="button"
+              onClick={() => setMenuOpen((open) => !open)}
+              aria-label="Toggle menu"
+              aria-expanded={menuOpen}
+              className="flex h-9 w-9 items-center justify-center rounded-md border border-slate-200 text-slate-600"
+            >
+              {menuOpen ? "✕" : "☰"}
+            </button>
+          </div>
         </div>
 
         {menuOpen && (
@@ -67,7 +70,6 @@ export const MarketingLayout = () => {
               >
                 {t.nav.about}
               </Link>
-              <LanguageSwitcher />
               {signInArea}
             </div>
           </div>
