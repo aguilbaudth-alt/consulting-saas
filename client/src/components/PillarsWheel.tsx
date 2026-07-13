@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLanguage } from "../context/LanguageContext";
 import { PillarIcon } from "../data/pillars";
 
@@ -17,9 +17,18 @@ interface PillarsWheelProps {
 
 export const PillarsWheel = ({ pillars }: PillarsWheelProps) => {
   const [active, setActive] = useState(0);
+  const pausedRef = useRef(false);
   const { t } = useLanguage();
   const activePillar = pillars[active];
   const activeText = t.pillars[activePillar.id];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      if (pausedRef.current) return;
+      setActive((current) => (current + 1) % pillars.length);
+    }, 2000);
+    return () => clearInterval(timer);
+  }, [pillars.length]);
 
   return (
     <div className="mx-auto mt-12 max-w-lg">
@@ -27,7 +36,15 @@ export const PillarsWheel = ({ pillars }: PillarsWheelProps) => {
         {t.wheel.clickPillar}
       </p>
 
-      <div className="relative mx-auto aspect-square w-full">
+      <div
+        className="relative mx-auto aspect-square w-full"
+        onMouseEnter={() => {
+          pausedRef.current = true;
+        }}
+        onMouseLeave={() => {
+          pausedRef.current = false;
+        }}
+      >
         <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full">
           <circle
             cx="50"
@@ -85,6 +102,7 @@ export const PillarsWheel = ({ pillars }: PillarsWheelProps) => {
               key={pillar.id}
               type="button"
               onClick={() => setActive(index)}
+              onMouseEnter={() => setActive(index)}
               style={{ top: pos.top, left: pos.left }}
               className={`absolute flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 shadow-sm transition sm:h-20 sm:w-20 ${
                 isActive
