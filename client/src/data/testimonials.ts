@@ -15,8 +15,8 @@ export const TESTIMONIALS: Testimonial[] = [
     company: "PUR",
     photo: "/testimonials/pur.jpg",
     quote: {
-      en: "[Placeholder quote — to be replaced with the real PUR testimonial.]",
-      fr: "[Texte provisoire — à remplacer par le vrai témoignage PUR.]",
+      en: "LEANOVEX shows the highest degree of professionalism, dedication, and result-oriented work. With a strong focus on key priorities and great team spirit, we loved collaborating with them on several missions for our key clients, where LEANOVEX always delivered best-in-class results.",
+      fr: "LEANOVEX fait preuve du plus haut niveau de professionnalisme, d'engagement et d'un travail orienté résultats. Avec une forte capacité à prioriser et un véritable esprit d'équipe, nous avons adoré collaborer avec eux sur plusieurs missions pour nos clients clés, où LEANOVEX a toujours livré des résultats de tout premier ordre.",
     },
   },
   {
