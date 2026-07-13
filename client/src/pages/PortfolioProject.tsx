@@ -40,6 +40,14 @@ export const PortfolioProject = () => {
 
         {summary && <p className="mt-6 text-lg text-slate-700">{summary}</p>}
 
+        {project.photo && (
+          <img
+            src={project.photo}
+            alt={project.name}
+            className="mt-8 w-full rounded-2xl border border-slate-200 object-cover"
+          />
+        )}
+
         {supplierCategories && supplierCategories.length > 0 && (
           <div className="mt-6 flex flex-wrap gap-2">
             {supplierCategories.map((category) => (

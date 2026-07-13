@@ -12,6 +12,7 @@ export interface PortfolioProject {
   slug: string;
   name: string;
   logo: string;
+  photo?: string;
   sector?: LocalizedText;
   summary?: LocalizedText;
   supplierCategories?: LocalizedList;
@@ -116,7 +117,46 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     name: "Cobra Advanced Composites",
     logo: "/logos/cobra-advanced-composites.png",
   },
-  { slug: "driessen", name: "Driessen", logo: "/logos/driessen.png" },
+  {
+    slug: "driessen",
+    name: "Driessen",
+    logo: "/logos/driessen.png",
+    photo: "/portfolio/driessen-kanban.webp",
+    sector: {
+      en: "Aerospace manufacturing — Lean & continuous improvement",
+      fr: "Industrie aéronautique — Lean et amélioration continue",
+    },
+    summary: {
+      en: "Lean transformation of Driessen's Front End Engineering section, moving from a full process audit to a visual Kanban system that keeps 200+ simultaneous projects on track.",
+      fr: "Transformation Lean de la section Front End Engineering de Driessen, passant d'un audit de processus complet à un système Kanban visuel permettant de piloter plus de 200 projets simultanés.",
+    },
+    challenge: {
+      en: "Driessen's Front End Engineering (FEE) section — around 80 engineers, technicians, and project leaders handling pricing, prototyping, validation, and the transfer of new parts to mass production — was running more than 200 projects at once. The team needed a clearer workflow, and a way to keep the new way of working alive day-to-day rather than have it fade once the consultant left.",
+      fr: "La section Front End Engineering (FEE) de Driessen, environ 80 ingénieurs, techniciens et chefs de projet en charge du chiffrage, du prototypage, de la validation et du transfert des nouvelles pièces vers la production de série, gérait plus de 200 projets en simultané. L'équipe avait besoin d'un flux de travail plus clair, et d'un moyen de faire vivre la nouvelle organisation au quotidien plutôt que de la voir s'estomper une fois le consultant parti.",
+    },
+    approach: {
+      en: "Audited the FEE section using Value Stream Mapping (VSM), which led to a redesigned workflow and a simpler, more user-friendly documentation system. Because a new system only sticks if people can see it working, a visual management tool was added on top: a physical Kanban board giving the whole team a clear, shared view of project status, workload, and bottlenecks at a glance.",
+      fr: "Audit de la section FEE à l'aide d'un VSM (Value Stream Mapping), débouchant sur un nouveau flux de travail et un système documentaire plus simple et plus ergonomique. Un nouveau système ne tient dans la durée que si les équipes en voient concrètement les effets : un outil de management visuel a donc été ajouté, sous la forme d'un tableau Kanban physique donnant à toute l'équipe une vision claire et partagée de l'état des projets, de la charge de travail et des points de blocage.",
+    },
+    results: {
+      en: [
+        "Shorter project lead times and better-balanced workload across engineers and technicians",
+        "Faster, more structured problem-solving",
+        "Manufacturing and quality requirements standardized and systematically carried through to production",
+        "Better PPAP coordination with internal processes",
+        "SPC and QA records standardized and consistently completed on the production floor",
+        "Higher production yield, shorter changeover times, and a more proactive mindset among operators",
+      ],
+      fr: [
+        "Réduction des délais projets et meilleur équilibrage de la charge entre ingénieurs et techniciens",
+        "Résolution de problèmes plus rapide et plus structurée",
+        "Exigences qualité et production standardisées et systématiquement transmises à la production",
+        "Meilleure coordination PPAP avec les processus internes",
+        "Enregistrements SPC et QA standardisés et systématiquement complétés en production",
+        "Rendement de production en hausse, temps de changement de série réduits, et posture plus proactive des opérateurs",
+      ],
+    },
+  },
   { slug: "ista", name: "ISTA", logo: "/logos/ista.png" },
   { slug: "datamars", name: "DataMars", logo: "/logos/datamars.png" },
   { slug: "b-braun", name: "B.Braun", logo: "/logos/b-braun.png" },
