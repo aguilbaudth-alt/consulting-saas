@@ -47,11 +47,11 @@ export const PillarsWheel = ({ pillars }: PillarsWheelProps) => {
           })}
         </svg>
 
-        <div className="absolute left-1/2 top-1/2 flex h-24 w-24 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full bg-blue-50 text-center">
-          <span className="text-[10px] font-semibold uppercase tracking-wide text-blue-800">
+        <div className="absolute left-1/2 top-1/2 flex h-28 w-28 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full bg-blue-50 text-center">
+          <span className="text-sm font-bold uppercase tracking-wide text-blue-800">
             Supplier
           </span>
-          <span className="text-[10px] font-semibold uppercase tracking-wide text-blue-800">
+          <span className="text-sm font-bold uppercase tracking-wide text-blue-800">
             Control
           </span>
         </div>
