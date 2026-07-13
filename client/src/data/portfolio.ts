@@ -30,7 +30,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
       "Material dyeing & coloring",
     ],
     challenge:
-      "PUR needed independent, on-the-ground auditors able to assess Health & Safety, Social, and Environmental (HSSE) risk at supplier factories across Asia on behalf of an ultra-luxury brand in its client portfolio (client name withheld under confidentiality agreement) — combining a rigorous, standardized methodology with the cultural and operational fluency to work directly with local factory management.",
+      "PUR needed independent, on-the-ground auditors able to assess Health & Safety, Social, and Environmental (HSSE) risk at supplier factories across Asia on behalf of an ultra-luxury brand in its client portfolio, combining a rigorous, standardized methodology with the cultural and operational fluency to work directly with local factory management.",
     approach:
       "Acted as an independent HSSE auditor for PUR, running full-day, on-site audits: comprehensive factory walkthroughs covering safety, chemical handling and environmental processes, cross-checked against employee interviews and documentation review (contracts, payslips, licenses, risk assessments). Each audit was scored across Governance, Health & Safety, Social, and Environmental criteria, with findings and corrective action plans reported back to PUR and tracked through follow-up.",
     results: [
@@ -48,9 +48,9 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
       "Independent SSCA auditor for ba&sh's supply chain, assessing supplier sustainability and social compliance in Asia.",
     supplierCategories: ["Jewelry & metal accessories manufacturing"],
     challenge:
-      "ba&sh needed an independent, standardized assessment of its suppliers' ethical, social, and environmental practices — going beyond a simple checklist to understand where real risk sat and how much room for improvement each supplier had.",
+      "ba&sh needed an independent, standardized assessment of its suppliers' ethical, social, and environmental practices, going beyond a simple checklist to understand where real risk sat and how much room for improvement each supplier had.",
     approach:
-      "Conducted on-site audits using Pur Projet's Sustainable Supply Chain Audit (SSCA)® methodology, combining factory walkthroughs, structured interviews with management and employees, and documentation review. Each supplier was scored across three pillars — Governance & Ethics, People, and Ecosystems — benchmarked against international standards including ILO conventions and SA8000.",
+      "Conducted on-site audits using Pur Projet's Sustainable Supply Chain Audit (SSCA)® methodology, combining factory walkthroughs, structured interviews with management and employees, and documentation review. Each supplier was scored across three pillars (Governance & Ethics, People, and Ecosystems), benchmarked against international standards including ILO conventions and SA8000.",
     results: [
       "Delivered clear, benchmarked visibility into supplier practices across governance, labor, and environmental dimensions",
       "Identified concrete, prioritized corrective actions for each supplier",
