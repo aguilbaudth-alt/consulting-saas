@@ -70,7 +70,7 @@ export const AuditGuide = () => {
             10 Red Flags When Sourcing Suppliers in Thailand
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-blue-100">
-            A free quality audit guide for manufacturing leaders — spot the warning signs before
+            A free quality audit guide for manufacturing leaders. Spot the warning signs before
             they cost you a shipment, a client relationship, or your reputation.
           </p>
 
@@ -127,7 +127,7 @@ export const AuditGuide = () => {
                 </div>
                 <h3 className="text-xl font-semibold text-blue-900">You're all set!</h3>
                 <p className="mt-2 text-slate-600">
-                  Thanks, {form.name.split(" ")[0]}. Check your inbox at {form.email} — your free
+                  Thanks, {form.name.split(" ")[0]}. Check your inbox at {form.email}, your free
                   guide is on its way.
                 </p>
               </div>
