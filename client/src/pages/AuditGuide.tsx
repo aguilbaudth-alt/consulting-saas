@@ -3,16 +3,16 @@ import { Link } from "react-router-dom";
 import { submitLead } from "../api/leads";
 
 const RED_FLAGS = [
-  "No verifiable business registration or factory license on file",
-  "Refuses to allow a facility visit or a third-party audit",
-  "Subcontracts your order to another factory without disclosure",
-  "Product samples look nothing like mass-production output",
-  "Lead times shift constantly with nothing in writing",
-  "No documented quality control process or inspection reports",
-  "Pricing is unusually low with no clear cost breakdown",
-  "High worker turnover or visibly unsafe working conditions",
-  "Reluctant to provide references from other export clients",
-  "No export certification history (e.g. ISO, BSCI, SMETA)",
+  "Unrealistic lead time guarantees",
+  "Inconsistent production records",
+  "Excessive subcontracting",
+  "Poor communication with technical staff",
+  "No documented quality control process",
+  "Owner handles everything personally",
+  "No material or lot traceability",
+  "Blind agreement to all requests",
+  "High operator turnover",
+  "Pushing for big orders too fast",
 ];
 
 interface FormState {
