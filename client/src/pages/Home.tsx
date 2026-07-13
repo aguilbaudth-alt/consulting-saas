@@ -8,7 +8,7 @@ import { PORTFOLIO_PROJECTS } from "../data/portfolio";
 
 export const Home = () => {
   const { user } = useAuth();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   return (
     <>
@@ -23,13 +23,13 @@ export const Home = () => {
           <p className="mx-auto mt-6 max-w-2xl text-lg text-blue-100">{t.home.heroSubtitle}</p>
           <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
             <Link
-              to="/contact"
+              to={`/${language}/contact`}
               className="inline-block rounded-md bg-sky-500 px-8 py-3 text-base font-semibold text-white shadow-lg shadow-sky-900/30 transition hover:bg-sky-400"
             >
               {t.home.scheduleConsultation}
             </Link>
             <Link
-              to="/audit-guide"
+              to={`/${language}/audit-guide`}
               className="inline-block rounded-md border border-white/30 bg-white/5 px-8 py-3 text-base font-semibold text-white backdrop-blur transition hover:bg-white/15"
             >
               {t.home.downloadGuide}
@@ -76,7 +76,7 @@ export const Home = () => {
           {PORTFOLIO_PROJECTS.map((project) => (
             <Link
               key={project.slug}
-              to={`/portfolio/${project.slug}`}
+              to={`/${language}/portfolio/${project.slug}`}
               className="flex h-20 items-center justify-center rounded-lg border border-slate-200 bg-white px-4 transition hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-sm"
             >
               <ClientLogo name={project.name} logo={project.logo} className="h-10" />
@@ -90,13 +90,13 @@ export const Home = () => {
           <h2 className="text-2xl font-bold sm:text-3xl">{t.home.ctaTitle}</h2>
           <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
             <Link
-              to="/contact"
+              to={`/${language}/contact`}
               className="inline-block rounded-md bg-sky-500 px-8 py-3 font-semibold text-white shadow-lg shadow-sky-900/30 transition hover:bg-sky-400"
             >
               {t.home.scheduleConsultation}
             </Link>
             <Link
-              to="/audit-guide"
+              to={`/${language}/audit-guide`}
               className="inline-block rounded-md border border-white/30 bg-white/5 px-8 py-3 font-semibold text-white backdrop-blur transition hover:bg-white/15"
             >
               {t.home.downloadGuide}

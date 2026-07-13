@@ -1,7 +1,8 @@
-import { createContext, ReactNode, useContext, useEffect, useState } from "react";
+import { createContext, ReactNode, useContext, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Language, Translations, translations } from "../i18n/translations";
 
-const STORAGE_KEY = "leanovex_lang";
+export const LANG_STORAGE_KEY = "leanovex_lang";
 const DEFAULT_LANGUAGE: Language = "en";
 
 interface LanguageContextValue {
@@ -12,21 +13,28 @@ interface LanguageContextValue {
 
 const LanguageContext = createContext<LanguageContextValue | undefined>(undefined);
 
-const readStoredLanguage = (): Language => {
-  if (typeof window === "undefined") return DEFAULT_LANGUAGE;
-  const stored = window.localStorage.getItem(STORAGE_KEY);
-  return stored === "fr" ? "fr" : DEFAULT_LANGUAGE;
+const detectLangFromPath = (pathname: string): Language | null => {
+  const match = pathname.match(/^\/(en|fr)(?:\/|$)/);
+  return match ? (match[1] as Language) : null;
 };
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const [language, setLanguageState] = useState<Language>(readStoredLanguage);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const urlLang = detectLangFromPath(location.pathname);
+  const language: Language = urlLang ?? DEFAULT_LANGUAGE;
 
   useEffect(() => {
-    window.localStorage.setItem(STORAGE_KEY, language);
+    window.localStorage.setItem(LANG_STORAGE_KEY, language);
     document.documentElement.lang = language;
   }, [language]);
 
-  const setLanguage = (lang: Language) => setLanguageState(lang);
+  const setLanguage = (nextLang: Language) => {
+    if (nextLang === language) return;
+    const rest = urlLang ? location.pathname.slice(3) : location.pathname;
+    const newPath = `/${nextLang}${rest === "/" ? "" : rest}`;
+    navigate(`${newPath}${location.search}${location.hash}`);
+  };
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage, t: translations[language] }}>

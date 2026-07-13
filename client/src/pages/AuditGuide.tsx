@@ -189,7 +189,7 @@ export const AuditGuide = () => {
           <h2 className="text-2xl font-bold sm:text-3xl">{t.auditGuide.ctaTitle}</h2>
           <p className="mt-3 text-blue-100">{t.auditGuide.ctaBody}</p>
           <Link
-            to="/contact"
+            to={`/${language}/contact`}
             className="mt-8 inline-block rounded-md bg-emerald-500 px-8 py-3 font-semibold text-white shadow-lg shadow-emerald-900/30 transition hover:bg-emerald-400"
           >
             {t.auditGuide.ctaButton}

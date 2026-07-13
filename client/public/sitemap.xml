@@ -1,47 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://www.leanovex.com/</loc>
+    <loc>https://www.leanovex.com/en</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.leanovex.com/en"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.leanovex.com/fr"/>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.leanovex.com/audit-guide</loc>
+    <loc>https://www.leanovex.com/fr</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.leanovex.com/en"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.leanovex.com/fr"/>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.leanovex.com/en/audit-guide</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.leanovex.com/en/audit-guide"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.leanovex.com/fr/audit-guide"/>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.leanovex.com/contact</loc>
+    <loc>https://www.leanovex.com/fr/audit-guide</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.leanovex.com/en/audit-guide"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.leanovex.com/fr/audit-guide"/>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.leanovex.com/portfolio/pur</loc>
+    <loc>https://www.leanovex.com/en/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.leanovex.com/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.leanovex.com/fr/contact"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.leanovex.com/fr/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.leanovex.com/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.leanovex.com/fr/contact"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.leanovex.com/en/portfolio/pur</loc>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.leanovex.com/portfolio/ba-sh</loc>
+    <loc>https://www.leanovex.com/fr/portfolio/pur</loc>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.leanovex.com/portfolio/cobra-advanced-composites</loc>
+    <loc>https://www.leanovex.com/en/portfolio/ba-sh</loc>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.leanovex.com/portfolio/driessen</loc>
+    <loc>https://www.leanovex.com/fr/portfolio/ba-sh</loc>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.leanovex.com/portfolio/ista</loc>
+    <loc>https://www.leanovex.com/en/portfolio/cobra-advanced-composites</loc>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.leanovex.com/portfolio/datamars</loc>
+    <loc>https://www.leanovex.com/fr/portfolio/cobra-advanced-composites</loc>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.leanovex.com/portfolio/b-braun</loc>
+    <loc>https://www.leanovex.com/en/portfolio/driessen</loc>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.leanovex.com/portfolio/renault-nissan</loc>
+    <loc>https://www.leanovex.com/fr/portfolio/driessen</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.leanovex.com/en/portfolio/ista</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.leanovex.com/fr/portfolio/ista</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.leanovex.com/en/portfolio/datamars</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.leanovex.com/fr/portfolio/datamars</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.leanovex.com/en/portfolio/b-braun</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.leanovex.com/fr/portfolio/b-braun</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.leanovex.com/en/portfolio/renault-nissan</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.leanovex.com/fr/portfolio/renault-nissan</loc>
     <priority>0.5</priority>
   </url>
 </urlset>

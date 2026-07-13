@@ -15,7 +15,7 @@ export const PortfolioProject = () => {
   );
 
   if (!project) {
-    return <Navigate to="/" replace />;
+    return <Navigate to={`/${language}`} replace />;
   }
 
   const sector = project.sector?.[language];
@@ -29,7 +29,10 @@ export const PortfolioProject = () => {
   return (
     <section className="bg-white py-16">
       <div className="mx-auto max-w-3xl px-6">
-        <Link to="/#portfolio" className="text-sm font-medium text-slate-500 hover:text-blue-800">
+        <Link
+          to={`/${language}#portfolio`}
+          className="text-sm font-medium text-slate-500 hover:text-blue-800"
+        >
           ← {t.portfolio.back}
         </Link>
 
@@ -92,7 +95,7 @@ export const PortfolioProject = () => {
         <div className="mt-12 rounded-2xl bg-blue-900 px-8 py-8 text-center text-white">
           <p className="text-lg font-semibold">{t.portfolio.ctaTitle}</p>
           <Link
-            to="/contact"
+            to={`/${language}/contact`}
             className="mt-4 inline-block rounded-md bg-sky-500 px-6 py-2.5 font-semibold text-white shadow-lg shadow-sky-900/30 transition hover:bg-sky-400"
           >
             {t.portfolio.ctaButton}

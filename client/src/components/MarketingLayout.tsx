@@ -5,13 +5,13 @@ import { LanguageSwitcher } from "./LanguageSwitcher";
 
 export const MarketingLayout = () => {
   const { user, logout } = useAuth();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   return (
     <div className="min-h-screen bg-white text-slate-900">
       <header className="border-b border-slate-100">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
-          <Link to="/" className="text-lg font-semibold text-blue-900">
+          <Link to={`/${language}`} className="text-lg font-semibold text-blue-900">
             LEANOVEX Consulting
           </Link>
           <div className="flex items-center gap-4">
