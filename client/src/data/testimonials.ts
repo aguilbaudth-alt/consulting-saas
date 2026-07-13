@@ -45,8 +45,8 @@ export const TESTIMONIALS: Testimonial[] = [
     company: "Renault Nissan",
     photo: "/testimonials/renault-nissan.jpg",
     quote: {
-      en: "Our LEANOVEX engineer was a very effective partner, showing great skill and professional rigor on every topic he managed. Trust and professionalism are two qualities I valued highly working with him. I strongly recommend LEANOVEX's engineering services.",
-      fr: "L'ingénieur LEANOVEX s'est révélé un partenaire très efficace, faisant preuve de grandes compétences et d'une rigueur professionnelle sur chaque sujet traité. La confiance et le professionnalisme sont deux qualités que j'ai particulièrement appréciées chez lui. Je recommande vivement les services d'ingénierie de LEANOVEX.",
+      en: "Our LEANOVEX engineer was a very effective partner, showing great skill and professional rigor on every topic he managed. Trust and professionalism are two qualities I valued highly working with him.",
+      fr: "L'ingénieur LEANOVEX s'est révélé un partenaire très efficace, faisant preuve de grandes compétences et d'une rigueur professionnelle sur chaque sujet traité. La confiance et le professionnalisme sont deux qualités que j'ai particulièrement appréciées chez lui.",
     },
   },
 ];
