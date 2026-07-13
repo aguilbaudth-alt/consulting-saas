@@ -49,22 +49,23 @@ export const PillarsWheel = ({ pillars }: PillarsWheelProps) => {
 
         <div
           key={activePillar.title}
-          className="absolute left-1/2 top-1/2 flex h-48 w-48 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full bg-blue-50 px-7 text-center sm:h-60 sm:w-60 sm:px-9"
+          className="absolute left-1/2 top-1/2 flex h-52 w-52 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full bg-blue-50 px-7 text-center sm:h-72 sm:w-72 sm:px-10"
         >
-          <span className="flex h-7 w-7 items-center justify-center text-blue-800 sm:h-8 sm:w-8">
+          <span className="flex h-7 w-7 items-center justify-center text-blue-800 sm:h-9 sm:w-9">
             {activePillar.icon}
           </span>
-          <h3 className="mt-1.5 text-sm font-semibold leading-tight text-blue-900 sm:text-base">
+          <h3 className="mt-1.5 text-base font-bold leading-tight text-blue-900 sm:mt-2 sm:text-lg">
             {activePillar.title}
           </h3>
-          <p className="mt-1 text-[10px] italic leading-snug text-slate-500 sm:text-xs">
+          <p className="mt-1 text-xs italic leading-snug text-slate-500 sm:mt-1.5 sm:text-sm">
             {activePillar.tagline}
           </p>
-          <ul className="mt-2 space-y-1 sm:mt-3">
+          <div className="mt-2.5 w-16 border-t border-blue-200 sm:mt-3 sm:w-20" />
+          <ul className="mt-2.5 space-y-1 sm:mt-3 sm:space-y-1.5">
             {activePillar.items.map((item) => (
               <li
                 key={item}
-                className="text-[9.5px] leading-snug text-slate-700 sm:text-[11px]"
+                className="text-[11px] leading-snug text-slate-600 sm:text-sm"
               >
                 {item}
               </li>
@@ -81,15 +82,19 @@ export const PillarsWheel = ({ pillars }: PillarsWheelProps) => {
               type="button"
               onClick={() => setActive(index)}
               style={{ top: pos.top, left: pos.left }}
-              className={`absolute flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full border-2 shadow-sm transition sm:h-20 sm:w-20 ${
+              className={`absolute flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 shadow-sm transition sm:h-20 sm:w-20 ${
                 isActive
                   ? "border-blue-900 bg-blue-900 text-white"
                   : "border-slate-200 bg-white text-blue-800 hover:border-blue-300"
               }`}
               aria-pressed={isActive}
             >
-              <span className="h-5 w-5 sm:h-6 sm:w-6">{pillar.icon}</span>
-              <span className="mt-1 text-sm font-bold leading-none sm:text-base">
+              <span className="h-6 w-6 sm:h-7 sm:w-7">{pillar.icon}</span>
+              <span
+                className={`absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full text-[10px] font-bold shadow-sm sm:h-6 sm:w-6 sm:text-xs ${
+                  isActive ? "bg-white text-blue-900" : "bg-blue-900 text-white"
+                }`}
+              >
                 {index + 1}
               </span>
             </button>
