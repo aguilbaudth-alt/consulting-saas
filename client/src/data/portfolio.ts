@@ -39,7 +39,24 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
       "Supported Chanel's supplier accountability process with clear, actionable reporting",
     ],
   },
-  { slug: "ba-sh", name: "ba&sh", logo: "/logos/ba-sh.png" },
+  {
+    slug: "ba-sh",
+    name: "ba&sh",
+    logo: "/logos/ba-sh.png",
+    sector: "Fashion & accessories",
+    summary:
+      "Independent SSCA auditor for ba&sh's supply chain, assessing supplier sustainability and social compliance in Asia.",
+    supplierCategories: ["Jewelry & metal accessories manufacturing"],
+    challenge:
+      "ba&sh needed an independent, standardized assessment of its suppliers' ethical, social, and environmental practices — going beyond a simple checklist to understand where real risk sat and how much room for improvement each supplier had.",
+    approach:
+      "Conducted on-site audits using Pur Projet's Sustainable Supply Chain Audit (SSCA)® methodology, combining factory walkthroughs, structured interviews with management and employees, and documentation review. Each supplier was scored across three pillars — Governance & Ethics, People, and Ecosystems — benchmarked against international standards including ILO conventions and SA8000.",
+    results: [
+      "Delivered clear, benchmarked visibility into supplier practices across governance, labor, and environmental dimensions",
+      "Identified concrete, prioritized corrective actions for each supplier",
+      "Gave ba&sh a structured basis for tracking supplier improvement over time",
+    ],
+  },
   {
     slug: "cobra-advanced-composites",
     name: "Cobra Advanced Composites",
