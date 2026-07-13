@@ -81,7 +81,7 @@ export const PillarsWheel = ({ pillars }: PillarsWheelProps) => {
           );
         })}
       </div>
-      <p className="mt-4 text-center text-xs font-medium text-slate-400">
+      <p className="mt-14 text-center text-xs font-medium text-slate-400">
         Click a pillar to see the details
       </p>
       </div>
