@@ -1,6 +1,7 @@
 import { FormEvent, useState } from "react";
 import { submitLead } from "../api/leads";
 import { useLanguage } from "../context/LanguageContext";
+import { usePageMeta } from "../hooks/usePageMeta";
 
 interface FormState {
   name: string;
@@ -17,6 +18,8 @@ export const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  usePageMeta(t.contact.metaTitle, t.contact.metaDescription);
 
   const handleChange =
     (field: keyof FormState) =>

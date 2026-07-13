@@ -2,6 +2,7 @@ import { FormEvent, useState } from "react";
 import { Link } from "react-router-dom";
 import { submitLead } from "../api/leads";
 import { useLanguage } from "../context/LanguageContext";
+import { usePageMeta } from "../hooks/usePageMeta";
 
 interface FormState {
   name: string;
@@ -18,6 +19,8 @@ export const AuditGuide = () => {
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  usePageMeta(t.auditGuide.metaTitle, t.auditGuide.metaDescription);
 
   const handleChange = (field: keyof FormState) => (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm((prev) => ({ ...prev, [field]: e.target.value }));

@@ -6,10 +6,13 @@ import { useAuth } from "../context/AuthContext";
 import { useLanguage } from "../context/LanguageContext";
 import { PILLARS } from "../data/pillars";
 import { PORTFOLIO_PROJECTS } from "../data/portfolio";
+import { usePageMeta } from "../hooks/usePageMeta";
 
 export const Home = () => {
   const { user } = useAuth();
   const { t, language } = useLanguage();
+
+  usePageMeta(t.home.metaTitle, t.home.metaDescription);
 
   return (
     <>

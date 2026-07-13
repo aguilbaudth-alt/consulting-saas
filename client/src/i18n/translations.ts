@@ -17,6 +17,8 @@ export interface Translations {
     rights: string;
   };
   home: {
+    metaTitle: string;
+    metaDescription: string;
     heroTitle: string;
     heroSubtitle: string;
     scheduleConsultation: string;
@@ -42,6 +44,8 @@ export interface Translations {
     "crisis-recovery": PillarText;
   };
   auditGuide: {
+    metaTitle: string;
+    metaDescription: string;
     eyebrow: string;
     title: string;
     subtitle: string;
@@ -72,6 +76,8 @@ export interface Translations {
     ctaButton: string;
   };
   contact: {
+    metaTitle: string;
+    metaDescription: string;
     title: string;
     subtitle: string;
     fieldName: string;
@@ -115,6 +121,9 @@ export const translations: Record<Language, Translations> = {
       rights: "All rights reserved.",
     },
     home: {
+      metaTitle: "Supplier Quality Audits & Sourcing Risk Consulting in Asia",
+      metaDescription:
+        "Independent supplier audits, factory inspections, and sourcing risk management across Asia. 16+ years of field experience, 500+ factories audited. Schedule a consultation.",
       heroTitle: "Supplier Risk Control in Asia",
       heroSubtitle: "Local and independent partner in Asia to reduce your manufacturing risks",
       scheduleConsultation: "Schedule a Consultation",
@@ -166,6 +175,9 @@ export const translations: Record<Language, Translations> = {
       },
     },
     auditGuide: {
+      metaTitle: "Free Supplier Audit Guide: 10 Red Flags Sourcing in Thailand",
+      metaDescription:
+        "Free supplier audit checklist: 10 red flags to spot before sourcing factories in Thailand, based on 500+ factory audits across Asia.",
       eyebrow: "Free Quality Audit Guide",
       title: "10 Red Flags When Sourcing Suppliers in Thailand",
       subtitle:
@@ -210,6 +222,9 @@ export const translations: Record<Language, Translations> = {
       ctaButton: "Schedule a Consultation",
     },
     contact: {
+      metaTitle: "Schedule a Supplier Audit Consultation",
+      metaDescription:
+        "Talk to our supplier quality and sourcing risk experts about factory audits, supplier selection, and production readiness across Asia.",
       title: "Schedule a Consultation",
       subtitle: "Tell us a bit about your supply chain and we'll follow up within one business day.",
       fieldName: "Name",
@@ -251,6 +266,9 @@ export const translations: Record<Language, Translations> = {
       rights: "Tous droits réservés.",
     },
     home: {
+      metaTitle: "Audits Qualité Fournisseurs & Conseil en Risque d'Approvisionnement en Asie",
+      metaDescription:
+        "Audits fournisseurs indépendants, inspections d'usines et gestion du risque d'approvisionnement en Asie. 16+ ans d'expérience terrain, 500+ usines auditées. Planifiez une consultation.",
       heroTitle: "Maîtrise du risque fournisseur en Asie",
       heroSubtitle:
         "Partenaire local et indépendant en Asie pour réduire vos risques de fabrication",
@@ -307,6 +325,9 @@ export const translations: Record<Language, Translations> = {
       },
     },
     auditGuide: {
+      metaTitle: "Guide Gratuit : 10 Signaux d'Alerte Sourcing Fournisseurs en Thaïlande",
+      metaDescription:
+        "Checklist gratuite d'audit fournisseur : 10 signaux d'alerte à repérer avant de sourcer des usines en Thaïlande, basée sur 500+ audits d'usines en Asie.",
       eyebrow: "Guide d'audit qualité gratuit",
       title: "10 signaux d'alerte lors du sourcing de fournisseurs en Thaïlande",
       subtitle:
@@ -351,6 +372,9 @@ export const translations: Record<Language, Translations> = {
       ctaButton: "Planifier une consultation",
     },
     contact: {
+      metaTitle: "Planifier une Consultation d'Audit Fournisseur",
+      metaDescription:
+        "Échangez avec nos experts en audit qualité fournisseur et gestion du risque d'approvisionnement : audits d'usine, sélection fournisseur, préparation à la production en Asie.",
       title: "Planifier une consultation",
       subtitle:
         "Parlez-nous de votre chaîne d'approvisionnement, nous reviendrons vers vous sous un jour ouvré.",
