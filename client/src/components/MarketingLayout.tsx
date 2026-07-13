@@ -10,20 +10,11 @@ export const MarketingLayout = () => {
   return (
     <div className="min-h-screen bg-white text-slate-900">
       <header className="border-b border-slate-100">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
-          <div className="flex items-center gap-4 sm:gap-6">
+        <div className="mx-auto max-w-6xl px-6 py-5">
+          <div className="flex items-center justify-between">
             <Link to={`/${language}`} className="text-lg font-semibold text-blue-900">
               LEANOVEX Consulting
             </Link>
-            <Link
-              to={`/${language}/about`}
-              className="text-sm font-medium text-slate-600 hover:text-blue-800"
-            >
-              {t.nav.about}
-            </Link>
-          </div>
-          <div className="flex items-center gap-4">
-            <LanguageSwitcher />
             {user ? (
               <div className="flex items-center gap-4 text-sm text-slate-600">
                 <span>
@@ -41,6 +32,15 @@ export const MarketingLayout = () => {
                 {t.nav.signIn}
               </Link>
             )}
+          </div>
+          <div className="mt-3 flex items-center justify-between">
+            <Link
+              to={`/${language}/about`}
+              className="text-sm font-medium text-slate-600 hover:text-blue-800"
+            >
+              {t.nav.about}
+            </Link>
+            <LanguageSwitcher />
           </div>
         </div>
       </header>
