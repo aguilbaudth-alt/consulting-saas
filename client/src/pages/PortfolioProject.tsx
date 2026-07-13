@@ -1,5 +1,4 @@
 import { Link, Navigate, useParams } from "react-router-dom";
-import { ClientLogo } from "../components/ClientLogo";
 import { useLanguage } from "../context/LanguageContext";
 import { PORTFOLIO_PROJECTS } from "../data/portfolio";
 import { usePageMeta } from "../hooks/usePageMeta";
@@ -35,10 +34,6 @@ export const PortfolioProject = () => {
         >
           ← {t.portfolio.back}
         </Link>
-
-        <div className="mt-6 flex h-24 w-full items-center justify-center">
-          <ClientLogo name={project.name} logo={project.logo} className="h-full" />
-        </div>
 
         <h1 className="mt-6 text-3xl font-bold text-blue-900">{project.name}</h1>
         {sector && <p className="mt-1 text-sm text-slate-500">{sector}</p>}

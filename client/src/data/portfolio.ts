@@ -31,8 +31,8 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
       fr: "Conseil en impact environnemental et social",
     },
     summary: {
-      en: "Independent HSSE auditor for PUR's supply chain sustainability programs, assessing supplier risk across Asia on behalf of an ultra-luxury goods client (name confidential under NDA).",
-      fr: "Auditeur HSSE indépendant pour les programmes de durabilité de la chaîne d'approvisionnement de PUR, évaluant le risque fournisseur en Asie pour le compte d'un client du secteur du luxe ultra-haut de gamme (nom confidentiel sous accord de confidentialité).",
+      en: "Independent HSSE auditor assessing supplier risk across Asia for a French luxury goods client (name confidential under NDA), through PUR's sustainability audit program.",
+      fr: "Auditeur HSSE indépendant, évaluant le risque fournisseur en Asie pour un client français du secteur du luxe (nom confidentiel sous accord de confidentialité), dans le cadre du programme d'audit de durabilité de PUR.",
     },
     supplierCategories: {
       en: [
@@ -57,12 +57,12 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
       ],
     },
     challenge: {
-      en: "PUR needed independent, on-the-ground auditors able to assess Health & Safety, Social, and Environmental (HSSE) risk at supplier factories across Asia on behalf of an ultra-luxury brand in its client portfolio, combining a rigorous, standardized methodology with the cultural and operational fluency to work directly with local factory management.",
-      fr: "PUR avait besoin d'auditeurs indépendants de terrain, capables d'évaluer les risques Santé & Sécurité, Sociaux et Environnementaux (HSSE) dans les usines fournisseurs à travers l'Asie, pour le compte d'une marque ultra-luxe de son portefeuille clients, en combinant une méthodologie rigoureuse et standardisée avec la maîtrise culturelle et opérationnelle nécessaire pour travailler directement avec les directions d'usine locales.",
+      en: "A French luxury goods brand, working through PUR's sustainability audit program, needed independent, on-the-ground auditors able to assess Health & Safety, Social, and Environmental (HSSE) risk at its supplier factories across Asia, combining a rigorous, standardized methodology with the cultural and operational fluency to work directly with local factory management.",
+      fr: "Une marque de luxe française, opérant via le programme d'audit de durabilité de PUR, avait besoin d'auditeurs indépendants de terrain, capables d'évaluer les risques Santé & Sécurité, Sociaux et Environnementaux (HSSE) dans les usines de ses fournisseurs à travers l'Asie, en combinant une méthodologie rigoureuse et standardisée avec la maîtrise culturelle et opérationnelle nécessaire pour travailler directement avec les directions d'usine locales.",
     },
     approach: {
-      en: "Acted as an independent HSSE auditor for PUR, running full-day, on-site audits: comprehensive factory walkthroughs covering safety, chemical handling and environmental processes, cross-checked against employee interviews and documentation review (contracts, payslips, licenses, risk assessments). Each audit was scored across Governance, Health & Safety, Social, and Environmental criteria, with findings and corrective action plans reported back to PUR and tracked through follow-up.",
-      fr: "Intervention en tant qu'auditeur HSSE indépendant pour PUR, réalisant des audits sur site d'une journée complète : visites approfondies des usines couvrant la sécurité, la gestion des produits chimiques et les processus environnementaux, recoupées avec des entretiens salariés et une revue documentaire (contrats, fiches de paie, licences, évaluations des risques). Chaque audit était noté selon les critères Gouvernance, Santé & Sécurité, Social et Environnement, avec des constats et plans d'action correctifs transmis à PUR et suivis dans le temps.",
+      en: "Acted as an independent HSSE auditor within PUR's program, running full-day, on-site audits of the client's suppliers: comprehensive factory walkthroughs covering safety, chemical handling and environmental processes, cross-checked against employee interviews and documentation review (contracts, payslips, licenses, risk assessments). Each audit was scored across Governance, Health & Safety, Social, and Environmental criteria, with findings and corrective action plans reported back to PUR and tracked through follow-up.",
+      fr: "Intervention en tant qu'auditeur HSSE indépendant dans le cadre du programme de PUR, réalisant des audits sur site d'une journée complète auprès des fournisseurs du client : visites approfondies des usines couvrant la sécurité, la gestion des produits chimiques et les processus environnementaux, recoupées avec des entretiens salariés et une revue documentaire (contrats, fiches de paie, licences, évaluations des risques). Chaque audit était noté selon les critères Gouvernance, Santé & Sécurité, Social et Environnement, avec des constats et plans d'action correctifs transmis à PUR et suivis dans le temps.",
     },
     results: {
       en: [
