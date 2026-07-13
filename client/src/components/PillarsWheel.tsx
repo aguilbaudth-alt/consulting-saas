@@ -3,10 +3,10 @@ import { useLanguage } from "../context/LanguageContext";
 import { PillarIcon } from "../data/pillars";
 
 const NODE_POSITIONS = [
-  { top: "2%", left: "50%" }, // top
-  { top: "50%", left: "98%" }, // right
-  { top: "98%", left: "50%" }, // bottom
-  { top: "50%", left: "2%" }, // left
+  { top: "1%", left: "50%" }, // top
+  { top: "50%", left: "99%" }, // right
+  { top: "99%", left: "50%" }, // bottom
+  { top: "50%", left: "1%" }, // left
 ];
 
 const ARROW_ANGLES = [45, 135, 225, 315];
@@ -28,7 +28,7 @@ export const PillarsWheel = ({ pillars }: PillarsWheelProps) => {
           <circle
             cx="50"
             cy="50"
-            r="44"
+            r="47"
             fill="none"
             stroke="currentColor"
             strokeWidth="1.5"
@@ -37,8 +37,8 @@ export const PillarsWheel = ({ pillars }: PillarsWheelProps) => {
           />
           {ARROW_ANGLES.map((angle) => {
             const rad = (angle * Math.PI) / 180;
-            const x = 50 + 44 * Math.sin(rad);
-            const y = 50 - 44 * Math.cos(rad);
+            const x = 50 + 47 * Math.sin(rad);
+            const y = 50 - 47 * Math.cos(rad);
             return (
               <polygon
                 key={angle}
@@ -52,7 +52,7 @@ export const PillarsWheel = ({ pillars }: PillarsWheelProps) => {
 
         <div
           key={activePillar.id}
-          className="absolute left-1/2 top-1/2 flex h-52 w-52 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full bg-blue-50 px-7 text-center sm:h-72 sm:w-72 sm:px-10"
+          className="absolute left-1/2 top-1/2 flex h-60 w-60 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full bg-blue-50 px-8 text-center sm:h-80 sm:w-80 sm:px-11"
         >
           <span className="flex h-7 w-7 items-center justify-center text-blue-800 sm:h-9 sm:w-9">
             {activePillar.icon}
@@ -82,14 +82,14 @@ export const PillarsWheel = ({ pillars }: PillarsWheelProps) => {
               type="button"
               onClick={() => setActive(index)}
               style={{ top: pos.top, left: pos.left }}
-              className={`absolute flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 shadow-sm transition sm:h-20 sm:w-20 ${
+              className={`absolute flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 shadow-sm transition sm:h-20 sm:w-20 ${
                 isActive
                   ? "border-blue-900 bg-blue-900 text-white"
                   : "border-slate-200 bg-white text-blue-800 hover:border-blue-300"
               }`}
               aria-pressed={isActive}
             >
-              <span className="h-6 w-6 sm:h-7 sm:w-7">{pillar.icon}</span>
+              <span className="h-5 w-5 sm:h-7 sm:w-7">{pillar.icon}</span>
               <span
                 className={`absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full text-[10px] font-bold shadow-sm sm:h-6 sm:w-6 sm:text-xs ${
                   isActive ? "bg-white text-blue-900" : "bg-blue-900 text-white"
