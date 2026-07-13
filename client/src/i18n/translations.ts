@@ -274,11 +274,11 @@ export const translations: Record<Language, Translations> = {
       name: "Antoine Guilbaud",
       role: "Founder & Consultant, LEANOVEX",
       paragraph1:
-        "Manufacturing and operations leader with 20 years of experience managing complex factory ecosystems across Europe and Southeast Asia. My work has spanned automotive, aerospace, electronics, medical devices, and consumer goods, always with the same focus: scaling production, stabilizing quality, and closing the gap between engineering requirements and manufacturing execution.",
+        "Antoine Guilbaud is a manufacturing and operations leader with 20 years of experience managing complex factory ecosystems across Europe and Southeast Asia. His work has spanned automotive, aerospace, electronics, medical devices, and consumer goods, always with the same focus: scaling production, stabilizing quality, and closing the gap between engineering requirements and manufacturing execution.",
       paragraph2:
-        "Over two decades, I've designed assembly processes for a new automotive plant, led Lean Manufacturing improvements on a major aircraft program, directed engineering and quality systems for a large-scale electronics plant, transferred a medical device production line into a new factory, and led manufacturing quality and new product introduction for a global consumer electronics manufacturer across multiple factories in Southeast Asia.",
+        "Over two decades, he has designed assembly processes for a new automotive plant, led Lean Manufacturing improvements on a major aircraft program, directed engineering and quality systems for a large-scale electronics plant, transferred a medical device production line into a new factory, and led manufacturing quality and new product introduction for a global consumer electronics manufacturer across multiple factories in Southeast Asia.",
       paragraph3:
-        "I founded LEANOVEX in 2014 to bring that same combination of rigorous, standardized methodology and hands-on factory experience to companies sourcing and manufacturing in Asia. I'm a certified ISO 9001 internal auditor, and a strong advocate of Lean, Agile, and data-driven decision making.",
+        "He founded LEANOVEX in 2014 to bring that same combination of rigorous, standardized methodology and hands-on factory experience to companies sourcing and manufacturing in Asia. He is a certified ISO 9001 internal auditor, and a strong advocate of Lean, Agile, and data-driven decision making.",
       ctaTitle: "Facing supplier or manufacturing risk in Asia?",
       ctaButton: "Schedule a Consultation",
     },
@@ -441,11 +441,11 @@ export const translations: Record<Language, Translations> = {
       name: "Antoine Guilbaud",
       role: "Fondateur & Consultant, LEANOVEX",
       paragraph1:
-        "Responsable industriel et opérations avec 20 ans d'expérience dans la gestion d'écosystèmes industriels complexes en Europe et en Asie du Sud-Est. Mon parcours a couvert l'automobile, l'aéronautique, l'électronique, le dispositif médical et les biens de consommation, toujours avec le même objectif : monter en cadence la production, stabiliser la qualité, et faire le lien entre les exigences d'ingénierie et l'exécution industrielle.",
+        "Antoine Guilbaud est responsable industriel et opérations avec 20 ans d'expérience dans la gestion d'écosystèmes industriels complexes en Europe et en Asie du Sud-Est. Son parcours a couvert l'automobile, l'aéronautique, l'électronique, le dispositif médical et les biens de consommation, toujours avec le même objectif : monter en cadence la production, stabiliser la qualité, et faire le lien entre les exigences d'ingénierie et l'exécution industrielle.",
       paragraph2:
-        "En vingt ans, j'ai conçu des processus d'assemblage pour une nouvelle usine automobile, mené des chantiers d'amélioration Lean sur un programme aéronautique majeur, dirigé l'ingénierie et les systèmes qualité d'une usine électronique de grande envergure, transféré une ligne de production de dispositifs médicaux vers une nouvelle usine, et piloté la qualité industrielle et l'introduction de nouveaux produits pour un fabricant mondial d'électronique grand public, à travers plusieurs usines en Asie du Sud-Est.",
+        "En vingt ans, il a conçu des processus d'assemblage pour une nouvelle usine automobile, mené des chantiers d'amélioration Lean sur un programme aéronautique majeur, dirigé l'ingénierie et les systèmes qualité d'une usine électronique de grande envergure, transféré une ligne de production de dispositifs médicaux vers une nouvelle usine, et piloté la qualité industrielle et l'introduction de nouveaux produits pour un fabricant mondial d'électronique grand public, à travers plusieurs usines en Asie du Sud-Est.",
       paragraph3:
-        "J'ai fondé LEANOVEX en 2014 pour apporter cette même combinaison de méthodologie rigoureuse et standardisée et d'expérience terrain aux entreprises qui sourcent et fabriquent en Asie. Je suis auditeur interne certifié ISO 9001, et un fervent défenseur du Lean, de l'Agile et de la prise de décision fondée sur la donnée.",
+        "Il a fondé LEANOVEX en 2014 pour apporter cette même combinaison de méthodologie rigoureuse et standardisée et d'expérience terrain aux entreprises qui sourcent et fabriquent en Asie. Il est auditeur interne certifié ISO 9001, et un fervent défenseur du Lean, de l'Agile et de la prise de décision fondée sur la donnée.",
       ctaTitle: "Face à un risque fournisseur ou industriel en Asie ?",
       ctaButton: "Planifier une consultation",
     },
