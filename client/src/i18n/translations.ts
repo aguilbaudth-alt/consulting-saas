@@ -250,7 +250,7 @@ export const translations: Record<Language, Translations> = {
       downloadGuide: "Télécharger le guide gratuit",
       pillarsTitle: "Quatre piliers de la maîtrise du risque fournisseur",
       pillarsSubtitle:
-        "Une approche structurée couvrant tout le cycle de vie du fournisseur, de la sélection au redressement.",
+        "Une approche structurée couvrant tout le cycle de vie du fournisseur, de la sélection à la remédiation.",
       years: "16+ ans",
       yearsSub: "d'expérience terrain en Asie",
       factories: "500+ usines",
@@ -289,11 +289,11 @@ export const translations: Record<Language, Translations> = {
         items: ["Audit fournisseur périodique", "Suivi des KPI", "Contrôles ESG"],
       },
       "crisis-recovery": {
-        title: "Gestion de crise et redressement",
+        title: "Gestion de crise et remédiation",
         tagline: "Résolvez rapidement les problèmes fournisseurs",
         items: [
           "Analyse des causes racines",
-          "Accompagnement au redressement",
+          "Accompagnement à la remédiation",
           "Vérification des actions correctives",
         ],
       },
