@@ -7,14 +7,13 @@ export const ScrollToTop = () => {
   useEffect(() => {
     if (hash) {
       const id = hash.slice(1);
-      // Wait for layout to settle after the route change before measuring the
-      // target element's position, otherwise scrollIntoView can compute 0.
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-        });
-      });
-      return;
+      // Defer slightly so the new page has finished laying out before we
+      // measure the target element's position, otherwise scrollIntoView
+      // can compute an offset of 0 and silently do nothing.
+      const timer = setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      }, 0);
+      return () => clearTimeout(timer);
     }
     window.scrollTo(0, 0);
   }, [pathname, hash]);
