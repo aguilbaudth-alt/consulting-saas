@@ -11,7 +11,7 @@ export interface Testimonial {
 export const TESTIMONIALS: Testimonial[] = [
   {
     name: "Tristan Lecomte",
-    title: "",
+    title: "Founder",
     company: "PUR",
     photo: "/testimonials/pur.jpg",
     quote: {
