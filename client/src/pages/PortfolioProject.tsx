@@ -23,7 +23,7 @@ export const PortfolioProject = () => {
           ← Back to portfolio
         </Link>
 
-        <div className="mt-6 flex h-24 w-48 items-center justify-start">
+        <div className="mt-6 flex h-24 w-full items-center justify-center">
           <ClientLogo name={project.name} logo={project.logo} className="h-full" />
         </div>
 
