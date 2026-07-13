@@ -1,6 +1,105 @@
 export type Language = "en" | "fr";
 
-export const translations = {
+interface PillarText {
+  title: string;
+  tagline: string;
+  items: string[];
+}
+
+export interface Translations {
+  nav: {
+    signIn: string;
+    welcomeBack: string;
+    signOut: string;
+  };
+  footer: {
+    tagline: string;
+    rights: string;
+  };
+  home: {
+    heroTitle: string;
+    heroSubtitle: string;
+    scheduleConsultation: string;
+    downloadGuide: string;
+    pillarsTitle: string;
+    pillarsSubtitle: string;
+    years: string;
+    yearsSub: string;
+    factories: string;
+    factoriesSub: string;
+    trustedBy: string;
+    portfolioTitle: string;
+    portfolioSubtitle: string;
+    ctaTitle: string;
+  };
+  wheel: {
+    clickPillar: string;
+  };
+  pillars: {
+    "supplier-selection": PillarText;
+    "production-readiness": PillarText;
+    "monitoring-improvement": PillarText;
+    "crisis-recovery": PillarText;
+  };
+  auditGuide: {
+    eyebrow: string;
+    title: string;
+    subtitle: string;
+    years: string;
+    yearsSub: string;
+    factories: string;
+    factoriesSub: string;
+    getGuideCta: string;
+    insideTitle: string;
+    insideSubtitle: string;
+    redFlags: string[];
+    formTitle: string;
+    formSubtitle: string;
+    fieldName: string;
+    fieldEmail: string;
+    fieldCompany: string;
+    fieldPhone: string;
+    optional: string;
+    submitting: string;
+    submit: string;
+    requiredError: string;
+    genericError: string;
+    successTitle: string;
+    successBody: string;
+    successBodyEnd: string;
+    ctaTitle: string;
+    ctaBody: string;
+    ctaButton: string;
+  };
+  contact: {
+    title: string;
+    subtitle: string;
+    fieldName: string;
+    fieldEmail: string;
+    fieldCompany: string;
+    fieldMessage: string;
+    messagePlaceholder: string;
+    submitting: string;
+    submit: string;
+    requiredError: string;
+    genericError: string;
+    successTitle: string;
+    successBody: string;
+    successBodyMid: string;
+    successBodyEnd: string;
+  };
+  portfolio: {
+    back: string;
+    challenge: string;
+    approach: string;
+    results: string;
+    ctaTitle: string;
+    ctaButton: string;
+    comingSoon: string;
+  };
+}
+
+export const translations: Record<Language, Translations> = {
   en: {
     nav: {
       signIn: "Already a client? Sign in",
@@ -271,4 +370,4 @@ export const translations = {
       comingSoon: "Description du projet à venir.",
     },
   },
-} as const;
+};

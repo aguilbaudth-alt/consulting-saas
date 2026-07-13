@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
-import { Language, translations } from "../i18n/translations";
+import { Language, Translations, translations } from "../i18n/translations";
 
 const STORAGE_KEY = "leanovex_lang";
 const DEFAULT_LANGUAGE: Language = "en";
@@ -7,7 +7,7 @@ const DEFAULT_LANGUAGE: Language = "en";
 interface LanguageContextValue {
   language: Language;
   setLanguage: (lang: Language) => void;
-  t: (typeof translations)["en"];
+  t: Translations;
 }
 
 const LanguageContext = createContext<LanguageContextValue | undefined>(undefined);
