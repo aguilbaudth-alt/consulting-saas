@@ -12,7 +12,7 @@ const Avatar = ({ name, photo }: { name: string; photo: string }) => {
 
   if (failed) {
     return (
-      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-blue-100 text-sm font-bold text-blue-800">
+      <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-blue-100 text-base font-bold text-blue-800">
         {initials}
       </div>
     );
@@ -22,7 +22,7 @@ const Avatar = ({ name, photo }: { name: string; photo: string }) => {
     <img
       src={photo}
       alt={name}
-      className="h-12 w-12 shrink-0 rounded-full object-cover"
+      className="h-16 w-16 shrink-0 rounded-full object-cover"
       onError={() => setFailed(true)}
     />
   );
