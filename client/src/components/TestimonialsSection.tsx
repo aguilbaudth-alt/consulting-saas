@@ -39,6 +39,8 @@ export const TestimonialsSection = () => {
   const trackRef = useRef<HTMLDivElement>(null);
   const offsetRef = useRef(0);
   const pausedRef = useRef(false);
+  const dragRef = useRef<{ pointerId: number; startX: number; startOffset: number } | null>(null);
+  const [dragging, setDragging] = useState(false);
 
   const track = [...TESTIMONIALS, ...TESTIMONIALS];
 
@@ -77,6 +79,26 @@ export const TestimonialsSection = () => {
     offsetRef.current += direction * cardWidth;
   };
 
+  const handlePointerDown = (e: React.PointerEvent) => {
+    dragRef.current = { pointerId: e.pointerId, startX: e.clientX, startOffset: offsetRef.current };
+    pausedRef.current = true;
+    setDragging(true);
+    e.currentTarget.setPointerCapture(e.pointerId);
+  };
+
+  const handlePointerMove = (e: React.PointerEvent) => {
+    const drag = dragRef.current;
+    if (!drag || drag.pointerId !== e.pointerId) return;
+    offsetRef.current = drag.startOffset - (e.clientX - drag.startX);
+  };
+
+  const endDrag = () => {
+    if (!dragRef.current) return;
+    dragRef.current = null;
+    setDragging(false);
+    pausedRef.current = false;
+  };
+
   return (
     <section className="bg-slate-50 py-16">
       <div className="mx-auto max-w-6xl px-6">
@@ -99,13 +121,18 @@ export const TestimonialsSection = () => {
         </button>
 
         <div
-          className="min-w-0 flex-1 overflow-hidden"
+          className={`min-w-0 flex-1 overflow-hidden ${dragging ? "cursor-grabbing" : "cursor-grab"}`}
+          style={{ touchAction: "pan-y" }}
           onMouseEnter={() => {
             pausedRef.current = true;
           }}
           onMouseLeave={() => {
-            pausedRef.current = false;
+            if (!dragRef.current) pausedRef.current = false;
           }}
+          onPointerDown={handlePointerDown}
+          onPointerMove={handlePointerMove}
+          onPointerUp={endDrag}
+          onPointerCancel={endDrag}
         >
           <div ref={trackRef} className="flex w-max gap-6">
             {track.map((testimonial, i) => {
