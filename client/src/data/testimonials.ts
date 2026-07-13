@@ -10,10 +10,7 @@ export interface Testimonial {
 
 export const TESTIMONIALS: Testimonial[] = [
   {
-    name: {
-      en: "LEANOVEX Engineering Team",
-      fr: "Équipe ingénieurs LEANOVEX",
-    },
+    name: "Tristan Lecomte",
     title: "",
     company: "PUR",
     photo: "/testimonials/pur.jpg",

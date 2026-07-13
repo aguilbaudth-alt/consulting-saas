@@ -39,15 +39,15 @@ export const TestimonialsSection = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setActive((current) => (current + 1) % TESTIMONIALS.length);
-    }, 6000);
+    }, 5000);
     return () => clearInterval(timer);
   }, []);
 
-  const testimonial = TESTIMONIALS[active];
-  const name = resolveName(testimonial.name, language);
+  const count = TESTIMONIALS.length;
+  const visible = [TESTIMONIALS[active], TESTIMONIALS[(active + 1) % count]];
 
   const goTo = (index: number) => {
-    setActive((index + TESTIMONIALS.length) % TESTIMONIALS.length);
+    setActive((index + count) % count);
   };
 
   return (
@@ -60,7 +60,7 @@ export const TestimonialsSection = () => {
           {t.testimonials.subtitle}
         </p>
 
-        <div className="mx-auto mt-10 max-w-2xl">
+        <div className="mx-auto mt-10 max-w-4xl">
           <div className="flex items-center gap-3 sm:gap-6">
             <button
               type="button"
@@ -71,23 +71,30 @@ export const TestimonialsSection = () => {
               ←
             </button>
 
-            <div
-              key={active}
-              className="flex min-h-[220px] flex-1 flex-col justify-between rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8"
-            >
-              <p className="text-sm leading-relaxed text-slate-600 sm:text-base">
-                &ldquo;{testimonial.quote[language]}&rdquo;
-              </p>
-              <div className="mt-6 flex items-center gap-3">
-                <Avatar name={name} photo={testimonial.photo} />
-                <div>
-                  <p className="font-semibold text-blue-900">{name}</p>
-                  <p className="text-xs text-slate-500">
-                    {testimonial.title ? `${testimonial.title}, ` : ""}
-                    {testimonial.company}
-                  </p>
-                </div>
-              </div>
+            <div className="grid flex-1 gap-6 sm:grid-cols-2">
+              {visible.map((testimonial, i) => {
+                const name = resolveName(testimonial.name, language);
+                return (
+                  <div
+                    key={`${active}-${i}`}
+                    className="flex min-h-[220px] flex-col justify-between rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8"
+                  >
+                    <p className="text-sm leading-relaxed text-slate-600">
+                      &ldquo;{testimonial.quote[language]}&rdquo;
+                    </p>
+                    <div className="mt-6 flex items-center gap-3">
+                      <Avatar name={name} photo={testimonial.photo} />
+                      <div>
+                        <p className="font-semibold text-blue-900">{name}</p>
+                        <p className="text-xs text-slate-500">
+                          {testimonial.title ? `${testimonial.title}, ` : ""}
+                          {testimonial.company}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
 
             <button
