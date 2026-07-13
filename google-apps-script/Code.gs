@@ -19,7 +19,10 @@
 
 const SHEET_NAME = "Leads";
 const OWNER_EMAIL = "aguilbaud.th@gmail.com";
-const GUIDE_PDF_URL = "https://leanovex.com/guides/Supplier_Audit_Guide_Thailand.pdf";
+const GUIDE_PDF_URLS = {
+  en: "https://leanovex.com/guides/Supplier_Audit_Guide_Thailand.pdf",
+  fr: "https://leanovex.com/guides/Supplier_Audit_Guide_Thailand_FR.pdf",
+};
 
 const SOURCE_LABELS = {
   "audit-guide": "Guide download",
@@ -135,9 +138,9 @@ function appendRow({ name, email, company, phone, message, source, lang, emailSt
 
 function sendGuideEmail(to, name, lang) {
   const template = getTemplate(lang);
-  const attachments = [
-    UrlFetchApp.fetch(GUIDE_PDF_URL).getBlob().setName("Supplier_Audit_Guide_Thailand.pdf"),
-  ];
+  const pdfUrl = GUIDE_PDF_URLS[lang] || GUIDE_PDF_URLS.en;
+  const fileName = lang === "fr" ? "Supplier_Audit_Guide_Thailand_FR.pdf" : "Supplier_Audit_Guide_Thailand.pdf";
+  const attachments = [UrlFetchApp.fetch(pdfUrl).getBlob().setName(fileName)];
 
   MailApp.sendEmail({
     to,

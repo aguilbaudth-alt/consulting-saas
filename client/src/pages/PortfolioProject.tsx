@@ -5,18 +5,26 @@ import { PORTFOLIO_PROJECTS } from "../data/portfolio";
 import { usePageMeta } from "../hooks/usePageMeta";
 
 export const PortfolioProject = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const { slug } = useParams();
   const project = PORTFOLIO_PROJECTS.find((p) => p.slug === slug);
 
   usePageMeta(
     project ? `${project.name} Case Study` : undefined,
-    project?.summary,
+    project?.summary?.[language],
   );
 
   if (!project) {
     return <Navigate to="/" replace />;
   }
+
+  const sector = project.sector?.[language];
+  const summary = project.summary?.[language];
+  const supplierCategories = project.supplierCategories?.[language];
+  const challenge = project.challenge?.[language];
+  const approach = project.approach?.[language];
+  const results = project.results?.[language];
+  const description = project.description?.[language];
 
   return (
     <section className="bg-white py-16">
@@ -30,15 +38,13 @@ export const PortfolioProject = () => {
         </div>
 
         <h1 className="mt-6 text-3xl font-bold text-blue-900">{project.name}</h1>
-        {project.sector && <p className="mt-1 text-sm text-slate-500">{project.sector}</p>}
+        {sector && <p className="mt-1 text-sm text-slate-500">{sector}</p>}
 
-        {project.summary && (
-          <p className="mt-6 text-lg text-slate-700">{project.summary}</p>
-        )}
+        {summary && <p className="mt-6 text-lg text-slate-700">{summary}</p>}
 
-        {project.supplierCategories && project.supplierCategories.length > 0 && (
+        {supplierCategories && supplierCategories.length > 0 && (
           <div className="mt-6 flex flex-wrap gap-2">
-            {project.supplierCategories.map((category) => (
+            {supplierCategories.map((category) => (
               <span
                 key={category}
                 className="rounded-full bg-blue-50 px-3 py-1 text-sm font-medium text-blue-800"
@@ -49,31 +55,31 @@ export const PortfolioProject = () => {
           </div>
         )}
 
-        {!project.challenge && !project.approach && !project.results && (
+        {!challenge && !approach && !results && (
           <div className="mt-8 rounded-2xl border border-slate-200 bg-slate-50 p-8 text-slate-600">
-            {project.description ?? t.portfolio.comingSoon}
+            {description ?? t.portfolio.comingSoon}
           </div>
         )}
 
-        {project.challenge && (
+        {challenge && (
           <div className="mt-10">
             <h2 className="text-xl font-semibold text-blue-900">{t.portfolio.challenge}</h2>
-            <p className="mt-3 text-slate-600">{project.challenge}</p>
+            <p className="mt-3 text-slate-600">{challenge}</p>
           </div>
         )}
 
-        {project.approach && (
+        {approach && (
           <div className="mt-10">
             <h2 className="text-xl font-semibold text-blue-900">{t.portfolio.approach}</h2>
-            <p className="mt-3 text-slate-600">{project.approach}</p>
+            <p className="mt-3 text-slate-600">{approach}</p>
           </div>
         )}
 
-        {project.results && project.results.length > 0 && (
+        {results && results.length > 0 && (
           <div className="mt-10">
             <h2 className="text-xl font-semibold text-blue-900">{t.portfolio.results}</h2>
             <ul className="mt-3 space-y-2">
-              {project.results.map((result) => (
+              {results.map((result) => (
                 <li key={result} className="flex gap-2 text-slate-600">
                   <span className="mt-1 text-emerald-600">✓</span>
                   <span>{result}</span>
