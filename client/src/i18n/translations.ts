@@ -97,6 +97,10 @@ export interface Translations {
     ctaButton: string;
     comingSoon: string;
   };
+  testimonials: {
+    title: string;
+    subtitle: string;
+  };
 }
 
 export const translations: Record<Language, Translations> = {
@@ -230,6 +234,10 @@ export const translations: Record<Language, Translations> = {
       ctaTitle: "Facing similar supplier risks?",
       ctaButton: "Schedule a Consultation",
       comingSoon: "Project description coming soon.",
+    },
+    testimonials: {
+      title: "What our clients say",
+      subtitle: "Feedback from the teams we've worked with.",
     },
   },
   fr: {
@@ -368,6 +376,10 @@ export const translations: Record<Language, Translations> = {
       ctaTitle: "Confronté à des risques fournisseurs similaires ?",
       ctaButton: "Planifier une consultation",
       comingSoon: "Description du projet à venir.",
+    },
+    testimonials: {
+      title: "Ce que disent nos clients",
+      subtitle: "Les retours des équipes avec lesquelles nous avons travaillé.",
     },
   },
 };

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ClientLogo } from "../components/ClientLogo";
 import { PillarsWheel } from "../components/PillarsWheel";
+import { TestimonialsSection } from "../components/TestimonialsSection";
 import { useAuth } from "../context/AuthContext";
 import { useLanguage } from "../context/LanguageContext";
 import { PILLARS } from "../data/pillars";
@@ -84,6 +85,8 @@ export const Home = () => {
           ))}
         </div>
       </section>
+
+      <TestimonialsSection />
 
       <section className="bg-blue-900 py-16 text-center text-white">
         <div className="mx-auto max-w-2xl px-6">
